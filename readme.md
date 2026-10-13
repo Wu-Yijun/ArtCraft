@@ -100,6 +100,7 @@ operations (`fs.ts`), HTTP requests with retries (`net.ts`), the release API and
 | `artcraft-apps/extract/` | no | Freshly unpacked archives, one folder per app. |
 | `artcraft-apps/dist/` | no | **The cache.** The publishable files of every app plus `versions.yaml`. |
 | `deploy/` | only `index.html` | The static site that GitHub Pages serves. `apps.json` and the app folders are generated. |
+| `static/` | yes | Assets that are not part of a build: the hero banner of this readme and the official software icons in [`static/icons/`](static/icons/README.md). |
 
 The cache is what makes a run cheap: with the GitHub Actions cache in place, only the apps that were
 actually released since the last run are downloaded again.
