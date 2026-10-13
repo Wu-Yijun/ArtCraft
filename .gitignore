@@ -8,8 +8,9 @@
 # Downloaded apps, extracted files and the local cache
 /artcraft-apps/
 
-# Generated app bundles (deploy/index.html and deploy/apps.json are tracked)
-/deploy/*/
+# Generated app bundles and the generated app list (only deploy/index.html is tracked)
+/deploy/**/*
+!/deploy/index.html
 
 # Logs and editor noise
 *.env
