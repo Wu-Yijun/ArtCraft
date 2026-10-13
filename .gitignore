@@ -1,2 +1,13 @@
-/artcraft-apps/
+# Dependencies
 /node_modules/
+
+# Downloaded apps, extracted files and the local cache
+/artcraft-apps/
+
+# Generated app bundles (deploy/index.html and deploy/apps.json are tracked)
+/deploy/*/
+
+# Logs and editor noise
+*.log
+.DS_Store
+Thumbs.db

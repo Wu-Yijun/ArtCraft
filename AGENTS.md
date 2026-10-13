@@ -2,6 +2,7 @@
 
 - 初始化仓库, 阅读分析任务和已有文件和结构, 分解并逐步完成工作, 每一小步都要提交git
 - 完成 config.yaml, 包括更多的 apps: pdfcraft(pdf), vectorcraft(Illustrator), filmcraft(Premier), lightcraft(Lightroom), photocraft(Photoshop), gridcraft(Excel), designcraft(InDesign), effectcraft(AfterEffects), cadcraft(AutoCAD), soundcraft(Audition)
+  - 你可能需要参考 https://github.com/storytold/ 下的不同的仓库的readme
 - 完成 readme.md, 作为项目介绍
 - 完成 deploy/index.html, 作为网页入口
 - 完成 src/main.ts, src/\*.ts, src/utils/\*.ts
