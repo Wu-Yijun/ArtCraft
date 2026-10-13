@@ -5,18 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ArtCraft · The Crafting Apps in your browser</title>
 <meta name="description" content="WordCraft, DeckCraft, GridCraft, PhotoCraft, VectorCraft, FilmCraft, LightCraft, PdfCraft, EffectCraft, DesignCraft, FigCraft, CADCraft and SoundCraft — open-source creative tools written from scratch in pure Rust, compiled to WebAssembly and running entirely in your browser.">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="https://getartcraft.com/artcraft-icon.svg" type="image/svg+xml">
 <style>
   :root {
-    color-scheme: dark;
-    --bg: #0e0f13;
-    --bg-soft: #16181f;
-    --card: #1a1d25;
-    --line: #272b36;
-    --text: #eceef4;
-    --muted: #9aa1b1;
-    --accent: #ff7a45;
-    --accent-soft: rgba(255, 122, 69, 0.14);
+    color-scheme: light;
+    --bg: #fbfbfd;
+    --card: #ffffff;
+    --card-hover: #fff7f3;
+    --line: #e6e7ec;
+    --text: #16181d;
+    --muted: #6a7280;
+    --faint: #9aa1ae;
+    --accent: #e2601f;
+    --accent-soft: rgba(226, 96, 31, 0.09);
+    --shadow: 0 1px 2px rgba(20, 22, 28, 0.05), 0 8px 24px rgba(20, 22, 28, 0.05);
   }
 
   * { box-sizing: border-box; }
@@ -32,8 +35,8 @@
 
   body {
     background-image:
-      radial-gradient(900px 500px at 15% -10%, rgba(255, 122, 69, 0.16), transparent 60%),
-      radial-gradient(700px 500px at 90% 0%, rgba(96, 165, 250, 0.12), transparent 60%);
+      radial-gradient(900px 480px at 12% -12%, rgba(226, 96, 31, 0.10), transparent 62%),
+      radial-gradient(760px 480px at 92% -6%, rgba(59, 130, 246, 0.08), transparent 62%);
     background-repeat: no-repeat;
   }
 
@@ -42,15 +45,15 @@
   .wrap {
     max-width: 1120px;
     margin: 0 auto;
-    padding: 56px 20px 72px;
+    padding: 52px 20px 72px;
   }
 
-  header.hero { text-align: center; margin-bottom: 44px; }
+  header.hero { text-align: center; margin-bottom: 38px; }
 
   .logo {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 18px;
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 16px;
     display: block;
   }
 
@@ -63,8 +66,8 @@
   h1 span { color: var(--accent); }
 
   .tagline {
-    margin: 0 auto 18px;
-    max-width: 640px;
+    margin: 0 auto 20px;
+    max-width: 660px;
     color: var(--muted);
     font-size: 17px;
   }
@@ -83,15 +86,12 @@
     padding: 4px 12px;
     border: 1px solid var(--line);
     border-radius: 999px;
-    background: var(--bg-soft);
+    background: var(--card);
     color: var(--muted);
     font-size: 13px;
   }
 
-  .search {
-    max-width: 460px;
-    margin: 0 auto 28px;
-  }
+  .search { max-width: 460px; margin: 0 auto 26px; }
 
   .search input {
     width: 100%;
@@ -103,6 +103,7 @@
     font: inherit;
     font-size: 15px;
     outline: none;
+    box-shadow: var(--shadow);
   }
 
   .search input:focus {
@@ -123,6 +124,7 @@
     border: 1px solid var(--line);
     border-radius: 16px;
     background: var(--card);
+    box-shadow: var(--shadow);
     text-decoration: none;
     transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
   }
@@ -130,7 +132,7 @@
   .card:hover {
     transform: translateY(-2px);
     border-color: var(--accent);
-    background: #1e222c;
+    background: var(--card-hover);
   }
 
   .card img {
@@ -138,7 +140,8 @@
     height: 48px;
     flex: 0 0 48px;
     border-radius: 12px;
-    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    background: var(--bg);
     object-fit: contain;
   }
 
@@ -167,15 +170,17 @@
 
   .card .aliases {
     margin: 10px 0 0;
-    color: #6f768a;
+    color: var(--faint);
     font-size: 12.5px;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    word-break: break-word;
   }
 
   .empty {
     padding: 48px 16px;
     border: 1px dashed var(--line);
     border-radius: 16px;
+    background: var(--card);
     color: var(--muted);
     text-align: center;
   }
@@ -189,19 +194,33 @@
     text-align: center;
   }
 
-  footer a { color: var(--muted); }
-
   footer .links {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 10px;
     justify-content: center;
-    margin-bottom: 12px;
+    align-items: center;
+    margin-bottom: 14px;
   }
 
-  footer .links a:hover { color: var(--accent); }
+  footer .links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 14px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--card);
+    color: var(--muted);
+    text-decoration: none;
+    transition: border-color 0.15s ease, color 0.15s ease;
+  }
 
-  footer .fine { font-size: 12.5px; color: #6f768a; }
+  footer .links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  footer .links svg { width: 16px; height: 16px; fill: currentColor; }
+
+  footer .fine { margin: 0 auto; max-width: 760px; font-size: 12.5px; color: var(--faint); }
 </style>
 </head>
 <body>
@@ -234,9 +253,15 @@
   <footer>
     <div class="links">
       <a href="https://getartcraft.com/">getartcraft.com</a>
-      <a href="https://github.com/storytold">github.com/storytold</a>
+      <a href="https://github.com/storytold">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        github.com/storytold
+      </a>
+      <a href="https://github.com/Wu-Yijun/ArtCraft">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        Wu-Yijun/ArtCraft
+      </a>
       <a href="https://discord.gg/artcraft">Discord</a>
-      <a href="https://github.com/Wu-Yijun/ArtCraft">This page</a>
     </div>
     <p class="fine">
       Every app is a clean-room reimplementation. Microsoft, Adobe, Autodesk and the other product
