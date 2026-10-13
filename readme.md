@@ -16,13 +16,23 @@
 </p>
 
 <p align="center">
-  <a href="https://Wu-Yijun.github.io/ArtCraft/"><img alt="Online" src="https://img.shields.io/badge/online-Wu--Yijun.github.io%2FArtCraft-ff7a45?style=flat-square"></a>
   <a href="https://getartcraft.com/"><img alt="ArtCraft" src="https://img.shields.io/badge/artcraft-getartcraft.com-ff7a45?style=flat-square"></a>
+  <a href="https://github.com/Wu-Yijun/ArtCraft"><img alt="This repository" src="https://img.shields.io/badge/deploy-Wu--Yijun%2FArtCraft-ff7a45?style=flat-square"></a>
   <a href="https://github.com/storytold"><img alt="Source" src="https://img.shields.io/badge/source-github.com%2Fstorytold-ff7a45?style=flat-square"></a>
   <a href="https://discord.gg/artcraft"><img alt="Discord" src="https://img.shields.io/badge/chat-discord.gg%2Fartcraft-5865f2?style=flat-square"></a>
 </p>
 
 <br>
+
+<p align="center">
+  <a href="https://Wu-Yijun.github.io/ArtCraft/">
+    <img alt="ArtCraft — open the Crafting Apps in your browser" src="docs/hero.svg" width="100%">
+  </a>
+</p>
+
+<p align="center">
+  <b>► <a href="https://Wu-Yijun.github.io/ArtCraft/">Open the apps in your browser</a> ◄</b>
+</p>
 
 ## What this repository does
 
@@ -40,24 +50,24 @@ WebAssembly, copied straight out of the official release archives.
 
 ## The apps
 
-Each app is served from a path named after the software it reimplements, plus a few short aliases
-that redirect to it.
+Every app is served from a path named after the software it reimplements, and each of those paths
+also answers to a handful of short aliases that redirect to it.
 
 | App | Path | Aliases | Source | Latest |
 | --- | --- | --- | --- | --- |
-| **PhotoCraft** — image editing | `/ArtCraft/photoshop/` | `/photo/` `/ps/` `/pic/` `/image/` | [storytold/photocraft](https://github.com/storytold/photocraft) | 0.8.2 |
-| **VectorCraft** — vector illustration | `/ArtCraft/illustrator/` | `/vector/` `/ai/` `/draw/` | [storytold/vectorcraft](https://github.com/storytold/vectorcraft) | 0.10.0 |
-| **FilmCraft** — video editing | `/ArtCraft/premiere/` | `/film/` `/video/` `/pr/` | [storytold/filmcraft](https://github.com/storytold/filmcraft) | 0.7.2 |
-| **LightCraft** — photo library and raw developer | `/ArtCraft/lightroom/` | `/light/` `/raw/` | [storytold/lightcraft](https://github.com/storytold/lightcraft) | 0.7.1 |
-| **PdfCraft** — read, organize and secure PDFs | `/ArtCraft/pdf/` | `/reader/` `/docs/` | [storytold/pdfcraft](https://github.com/storytold/pdfcraft) | 0.7.1 |
-| **EffectCraft** — motion graphics and VFX | `/ArtCraft/aftereffects/` | `/effect/` `/ae/` `/motion/` `/vfx/` | [storytold/effectcraft](https://github.com/storytold/effectcraft) | 0.9.2 |
-| **DesignCraft** — page layout and publishing | `/ArtCraft/indesign/` | `/design/` `/layout/` `/id/` | [storytold/designcraft](https://github.com/storytold/designcraft) | 0.7.1 |
-| **FigCraft** — interface design and prototyping | `/ArtCraft/figma/` | `/fig/` `/ui/` | [storytold/figcraft](https://github.com/storytold/figcraft) | 0.5.1 |
-| **GridCraft** — spreadsheets and data analysis | `/ArtCraft/excel/` | `/grid/` `/sheet/` `/table/` | [storytold/gridcraft](https://github.com/storytold/gridcraft) | 0.6.1 |
-| **CADCraft** — computer-aided design and drafting | `/ArtCraft/autocad/` | `/cad/` `/dwg/` | [storytold/cadcraft](https://github.com/storytold/cadcraft) | 0.6.2 |
-| **SoundCraft** — audio recording, editing and mixing | `/ArtCraft/audition/` | `/sound/` `/audio/` `/music/` | [storytold/soundcraft](https://github.com/storytold/soundcraft) | 0.6.1 |
-| **WordCraft** — word processing | `/ArtCraft/word/` | `/doc/` `/writer/` | [storytold/wordcraft](https://github.com/storytold/wordcraft) | 0.6.1 |
-| **DeckCraft** — presentations and slide shows | `/ArtCraft/powerpoint/` | `/slide/` `/deck/` `/ppt/` | [storytold/deckcraft](https://github.com/storytold/deckcraft) | 0.6.1 |
+| **PhotoCraft** — image editing | [`/ArtCraft/photoshop/`](https://Wu-Yijun.github.io/ArtCraft/photoshop/) | `/photo/` `/ps/` `/pic/` `/image/` `/pixels/` | [storytold/photocraft](https://github.com/storytold/photocraft) | 0.8.2 |
+| **VectorCraft** — vector illustration | [`/ArtCraft/illustrator/`](https://Wu-Yijun.github.io/ArtCraft/illustrator/) | `/vector/` `/ai/` `/draw/` `/svg/` | [storytold/vectorcraft](https://github.com/storytold/vectorcraft) | 0.10.0 |
+| **FilmCraft** — video editing | [`/ArtCraft/premiere/`](https://Wu-Yijun.github.io/ArtCraft/premiere/) | `/film/` `/video/` `/pr/` `/movie/` | [storytold/filmcraft](https://github.com/storytold/filmcraft) | 0.7.2 |
+| **LightCraft** — photo library and raw developer | [`/ArtCraft/lightroom/`](https://Wu-Yijun.github.io/ArtCraft/lightroom/) | `/light/` `/raw/` `/darkroom/` | [storytold/lightcraft](https://github.com/storytold/lightcraft) | 0.7.1 |
+| **PdfCraft** — read, organize and secure PDFs | [`/ArtCraft/pdf/`](https://Wu-Yijun.github.io/ArtCraft/pdf/) | `/acrobat/` `/reader/` `/docs/` `/pdfedit/` | [storytold/pdfcraft](https://github.com/storytold/pdfcraft) | 0.7.1 |
+| **EffectCraft** — motion graphics and VFX | [`/ArtCraft/aftereffects/`](https://Wu-Yijun.github.io/ArtCraft/aftereffects/) | `/effect/` `/ae/` `/motion/` `/vfx/` `/comp/` | [storytold/effectcraft](https://github.com/storytold/effectcraft) | 0.9.2 |
+| **DesignCraft** — page layout and publishing | [`/ArtCraft/indesign/`](https://Wu-Yijun.github.io/ArtCraft/indesign/) | `/design/` `/layout/` `/id/` `/publish/` | [storytold/designcraft](https://github.com/storytold/designcraft) | 0.7.1 |
+| **FigCraft** — interface design and prototyping | [`/ArtCraft/figma/`](https://Wu-Yijun.github.io/ArtCraft/figma/) | `/fig/` `/ui/` `/ux/` `/prototype/` | [storytold/figcraft](https://github.com/storytold/figcraft) | 0.5.1 |
+| **GridCraft** — spreadsheets and data analysis | [`/ArtCraft/excel/`](https://Wu-Yijun.github.io/ArtCraft/excel/) | `/xls/` `/spreadsheets/` `/sheet/` `/table/` `/grid/` | [storytold/gridcraft](https://github.com/storytold/gridcraft) | 0.6.1 |
+| **CADCraft** — computer-aided design and drafting | [`/ArtCraft/autocad/`](https://Wu-Yijun.github.io/ArtCraft/autocad/) | `/cad/` `/dwg/` `/draft/` | [storytold/cadcraft](https://github.com/storytold/cadcraft) | 0.6.2 |
+| **SoundCraft** — audio recording, editing and mixing | [`/ArtCraft/audition/`](https://Wu-Yijun.github.io/ArtCraft/audition/) | `/sound/` `/audio/` `/music/` `/daw/` | [storytold/soundcraft](https://github.com/storytold/soundcraft) | 0.6.1 |
+| **WordCraft** — word processing | [`/ArtCraft/word/`](https://Wu-Yijun.github.io/ArtCraft/word/) | `/doc/` `/writer/` `/rtf/` | [storytold/wordcraft](https://github.com/storytold/wordcraft) | 0.6.1 |
+| **DeckCraft** — presentations and slide shows | [`/ArtCraft/powerpoint/`](https://Wu-Yijun.github.io/ArtCraft/powerpoint/) | `/slide/` `/deck/` `/ppt/` `/slides/` | [storytold/deckcraft](https://github.com/storytold/deckcraft) | 0.6.1 |
 
 The versions above are the ones currently deployed; `deploy/apps.json` is the machine readable
 version of the same list.
@@ -89,7 +99,7 @@ operations (`fs.ts`), HTTP requests with retries (`net.ts`), the release API and
 | `artcraft-apps/release/` | no | The downloaded release archives. |
 | `artcraft-apps/extract/` | no | Freshly unpacked archives, one folder per app. |
 | `artcraft-apps/dist/` | no | **The cache.** The publishable files of every app plus `versions.yaml`. |
-| `deploy/` | only `index.html` and `apps.json` | The static site that GitHub Pages serves. |
+| `deploy/` | only `index.html` | The static site that GitHub Pages serves. `apps.json` and the app folders are generated. |
 
 The cache is what makes a run cheap: with the GitHub Actions cache in place, only the apps that were
 actually released since the last run are downloaded again.
@@ -129,6 +139,18 @@ node src/main.ts > logs/run.log 2>&1
 The pipeline exits with `0` and publishes nothing when every app is already up to date, and it sets
 the `hasUpdates`, `updatedApps` and `totalApps` step outputs for the workflow.
 
+### Formatting
+
+The sources follow [deno fmt](https://deno.com/) defaults, so a single command keeps the whole
+`src` tree consistent — no formatter dependency in `package.json`, just run it when you have Deno
+installed:
+
+```sh
+deno fmt src
+deno fmt --check src   # what CI would see
+pnpm typecheck          # tsc --noEmit
+```
+
 ## Adding an app
 
 1. Find the repository of the app under [github.com/storytold](https://github.com/storytold) and
@@ -159,7 +181,9 @@ the `hasUpdates`, `updatedApps` and `totalApps` step outputs for the workflow.
 3. Run `node src/main.ts`. The new app appears on the entry page and under its path and aliases.
 
 Folders and aliases have to be unique across the whole list — the pipeline refuses to start when two
-apps would fight over the same path.
+apps would fight over the same path. A config change alone — a new app, a new alias, a renamed path —
+is enough to trigger a rebuild, even when no app was released in between: step 3 compares the paths
+that `config.yaml` asks for with the ones the deploy folder actually contains.
 
 ## Deploying
 

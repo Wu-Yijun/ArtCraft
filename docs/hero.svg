@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="ArtCraft — the Crafting Apps in your browser">
+  <title>ArtCraft — the Crafting Apps in your browser</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#131826"/>
+      <stop offset="0.55" stop-color="#1b2033"/>
+      <stop offset="1" stop-color="#251a2b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.12" cy="0.1" r="0.75">
+      <stop offset="0" stop-color="#ff7a45" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#ff7a45" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="mark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffb08a"/>
+      <stop offset="1" stop-color="#ff7a45"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="300" fill="url(#bg)"/>
+  <rect width="1200" height="300" fill="url(#glow)"/>
+  <rect x="0.5" y="0.5" width="1199" height="299" fill="none" stroke="#ffffff" stroke-opacity="0.10"/>
+
+  <!-- mark -->
+  <g transform="translate(72 66)">
+    <path d="M0 26 L26 0 L52 26 L26 52 Z" fill="url(#mark)"/>
+    <path d="M26 14 L38 26 L26 38 L14 26 Z" fill="#131826"/>
+  </g>
+
+  <!-- title -->
+  <text x="72" y="182" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="62" font-weight="700" letter-spacing="-1.5" fill="#ffffff">Art<tspan fill="#ff7a45">Craft</tspan></text>
+  <text x="74" y="216" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="21" fill="#c9cddb">The Crafting Apps, in your browser.</text>
+
+  <!-- url -->
+  <g transform="translate(72 238)">
+    <rect width="322" height="34" rx="17" fill="#ffffff" fill-opacity="0.08" stroke="#ffffff" stroke-opacity="0.16"/>
+    <text x="18" y="23" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="15" fill="#ffb08a">wu-yijun.github.io/ArtCraft/</text>
+  </g>
+
+  <!-- apps -->
+  <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="600" fill="#ffffff">
+    <g transform="translate(716 64)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Ps</text></g>
+    <g transform="translate(794 64)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Ai</text></g>
+    <g transform="translate(872 64)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Pr</text></g>
+    <g transform="translate(950 64)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Lr</text></g>
+    <g transform="translate(1028 64)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Pdf</text></g>
+
+    <g transform="translate(716 138)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Ae</text></g>
+    <g transform="translate(794 138)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Id</text></g>
+    <g transform="translate(872 138)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Xl</text></g>
+    <g transform="translate(950 138)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Cad</text></g>
+    <g transform="translate(1028 138)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Au</text></g>
+
+    <g transform="translate(716 212)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Wd</text></g>
+    <g transform="translate(794 212)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Pp</text></g>
+    <g transform="translate(872 212)"><rect width="60" height="60" rx="15" fill="#ffffff" fill-opacity="0.09" stroke="#ff7a45" stroke-opacity="0.35"/><text x="30" y="37" text-anchor="middle">Fg</text></g>
+  </g>
+</svg>
