@@ -1,5 +1,3 @@
-import { join } from "node:path";
-
 import { pendingApps } from "./03-check-updates.ts";
 import type { Apps, ItemInfo } from "./type.ts";
 import { publishableFilter } from "./utils/bundle.ts";
@@ -56,9 +54,4 @@ export async function updateCache(apps: Apps): Promise<void> {
 
 	log("");
 	log(`  ${green("done")} ${cyan(String(Object.keys(cache.apps).length))} apps in ${dim(apps.config.cache.folder)}`);
-}
-
-/** Absolute path of an app inside the cache folder. */
-export function cachedAppFolder(apps: Apps, item: ItemInfo): string {
-	return join(apps.root, apps.config.cache.folder, item.folder);
 }

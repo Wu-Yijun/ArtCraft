@@ -9,7 +9,7 @@ import { resolve } from "node:path";
 // ---------------------------------------------------------------------------
 
 /** Name of the file, relative to the repository root. */
-export const ENV_FILE = ".env";
+const ENV_FILE = ".env";
 
 /** Reads .env and fills in the variables that are not set yet. */
 export function loadEnv(root: string): string | undefined {

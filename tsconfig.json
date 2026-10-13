@@ -7,6 +7,8 @@
 			"esnext"
 		],
 		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
 		"noUncheckedIndexedAccess": true,
 		"noImplicitOverride": true,
 		"verbatimModuleSyntax": true,

@@ -16,7 +16,7 @@ export function escapeHtml(text: string): string {
 }
 
 /** Escapes a string for use in HTML text content. */
-export function escapeText(text: string): string {
+function escapeText(text: string): string {
 	return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 

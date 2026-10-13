@@ -20,7 +20,7 @@ interface RawRelease {
 }
 
 /** Extracts `owner/repo` out of a repository URL. */
-export function parseRepoUrl(repoUrl: string): { owner: string; repo: string } {
+function parseRepoUrl(repoUrl: string): { owner: string; repo: string } {
 	const match = /^https?:\/\/(?:www\.)?github\.com\/([^/\s]+)\/([^/\s#?]+?)(?:\.git)?\/?$/i.exec(repoUrl.trim());
 	if (match === null) throw new Error(`not a GitHub repository URL: ${repoUrl}`);
 	const owner = match[1] as string;
@@ -29,7 +29,7 @@ export function parseRepoUrl(repoUrl: string): { owner: string; repo: string } {
 }
 
 /** Normalises `owner/repo` into an API path prefix. */
-export function repoApiPath(repoUrl: string): string {
+function repoApiPath(repoUrl: string): string {
 	const { owner, repo } = parseRepoUrl(repoUrl);
 	return `/repos/${owner}/${repo}`;
 }

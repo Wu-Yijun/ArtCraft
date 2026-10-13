@@ -21,11 +21,6 @@ export function isPublishableFile(relativePath: string): boolean {
 	return true;
 }
 
-/** Keeps only the publishable files of a file list. */
-export function publishableFiles(files: string[]): string[] {
-	return files.filter((file) => isPublishableFile(file));
-}
-
 /** Builds the filter used when copying a bundle into the cache. */
 export function publishableFilter(): (absolutePath: string, relativePath: string) => boolean {
 	return (_absolutePath, relativePath) => isPublishableFile(relativePath);

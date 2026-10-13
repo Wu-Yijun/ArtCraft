@@ -1,6 +1,6 @@
 import { constants } from "node:fs";
 import { access, cp, mkdir, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
-import { basename, dirname, join, relative, resolve, sep } from "node:path";
+import { dirname, join, relative, resolve, sep } from "node:path";
 
 // ---------------------------------------------------------------------------
 // Small file system helpers shared by the pipeline steps.
@@ -110,12 +110,6 @@ export async function listFiles(dir: string): Promise<string[]> {
 	return found;
 }
 
-/** True when `dir` exists and contains at least one entry. */
-export async function isNotEmpty(dir: string): Promise<boolean> {
-	if (!(await isDirectory(dir))) return false;
-	return (await readdir(dir)).length > 0;
-}
-
 /** Every file below `dir`, relative to it, sorted alphabetically. */
 export async function folderFiles(dir: string): Promise<string[]> {
 	if (!(await isDirectory(dir))) return [];
@@ -123,19 +117,6 @@ export async function folderFiles(dir: string): Promise<string[]> {
 }
 
 /** Normalises a path to forward slashes, the separator used inside zip files. */
-export function toPosix(path: string): string {
+function toPosix(path: string): string {
 	return sep === "/" ? path : path.split(sep).join("/");
-}
-
-/** Joins path fragments with forward slashes. */
-export function url(...parts: string[]): string {
-	return parts
-		.filter((part) => part !== "")
-		.map((part, index) => (index === 0 ? part.replace(/\/+$/, "") : part.replace(/^\/+|\/+$/g, "")))
-		.join("/");
-}
-
-/** Lowercase file name of a path, used to build cache lookups. */
-export function fileName(path: string): string {
-	return basename(path);
 }

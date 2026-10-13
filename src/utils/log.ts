@@ -21,7 +21,6 @@ export const red = (text: string): string => paint(31, text);
 export const green = (text: string): string => paint(32, text);
 export const yellow = (text: string): string => paint(33, text);
 export const blue = (text: string): string => paint(34, text);
-export const magenta = (text: string): string => paint(35, text);
 export const cyan = (text: string): string => paint(36, text);
 
 /** Writes a chunk to stdout. */

@@ -86,19 +86,11 @@ export async function fetchJson<T>(url: string): Promise<T> {
 	return (await response.json()) as T;
 }
 
-/** Downloads a URL and returns the response as text. */
-export async function fetchText(url: string): Promise<string> {
-	const response = await request(url);
-	return await response.text();
-}
-
 /** Called with the number of bytes already written. */
 export type DownloadReporter = (received: number, total: number) => void;
 
-/**
- * Streams a URL into a file. The callback is throttled by the caller so it can
- * report progress without flooding the log.
- */
+/** Streams a URL into a file. The callback is throttled by the caller so it can
+ * report progress without flooding the log. */
 export async function downloadFile(url: string, target: string, onProgress?: DownloadReporter): Promise<number> {
 	await ensureParent(target);
 	const response = await request(url);
