@@ -15,6 +15,20 @@
     "version": "0.8.2"
   },
   {
+    "name": "VectorCraft",
+    "title": "Illustrator",
+    "description": "Fast, open-source vector illustration, reimagined in pure Rust.",
+    "url": "/ArtCraft/illustrator/",
+    "aliases": [
+      "vector",
+      "ai",
+      "draw"
+    ],
+    "icon": "https://getartcraft.com/images/apps/vectorcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/vectorcraft",
+    "version": "0.10.0"
+  },
+  {
     "name": "FilmCraft",
     "title": "Premiere",
     "description": "Professional, open-source video editing, rebuilt from scratch in Rust.",
@@ -29,6 +43,102 @@
     "version": "0.7.2"
   },
   {
+    "name": "LightCraft",
+    "title": "Lightroom",
+    "description": "An open-source photo library and raw developer that runs on your machine.",
+    "url": "/ArtCraft/lightroom/",
+    "aliases": [
+      "light",
+      "raw"
+    ],
+    "icon": "https://getartcraft.com/images/apps/lightcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/lightcraft",
+    "version": "0.7.1"
+  },
+  {
+    "name": "PdfCraft",
+    "title": "PDF",
+    "description": "The open-source PDF workbench: read, organize, combine, split and secure.",
+    "url": "/ArtCraft/pdf/",
+    "aliases": [
+      "reader",
+      "docs"
+    ],
+    "icon": "https://getartcraft.com/images/apps/pdfcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/pdfcraft",
+    "version": "0.7.1"
+  },
+  {
+    "name": "EffectCraft",
+    "title": "After Effects",
+    "description": "Open-source motion graphics and visual effects, built in pure Rust.",
+    "url": "/ArtCraft/aftereffects/",
+    "aliases": [
+      "effect",
+      "ae",
+      "motion",
+      "vfx"
+    ],
+    "icon": "https://getartcraft.com/images/apps/effectcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/effectcraft",
+    "version": "0.9.2"
+  },
+  {
+    "name": "DesignCraft",
+    "title": "InDesign",
+    "description": "Open-source page layout and publishing, rebuilt from scratch in Rust.",
+    "url": "/ArtCraft/indesign/",
+    "aliases": [
+      "design",
+      "layout",
+      "id"
+    ],
+    "icon": "https://getartcraft.com/images/apps/designcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/designcraft",
+    "version": "0.7.1"
+  },
+  {
+    "name": "GridCraft",
+    "title": "Excel",
+    "description": "Fast, open-source spreadsheets and data analysis, rebuilt in pure Rust.",
+    "url": "/ArtCraft/excel/",
+    "aliases": [
+      "grid",
+      "sheet",
+      "table"
+    ],
+    "icon": "https://getartcraft.com/images/apps/gridcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/gridcraft",
+    "version": "0.6.1"
+  },
+  {
+    "name": "CADCraft",
+    "title": "AutoCAD",
+    "description": "Fast, open-source computer-aided design and drafting in pure Rust.",
+    "url": "/ArtCraft/autocad/",
+    "aliases": [
+      "cad",
+      "dwg"
+    ],
+    "icon": "https://getartcraft.com/images/apps/cadcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/cadcraft",
+    "version": "0.6.2"
+  },
+  {
+    "name": "SoundCraft",
+    "title": "Audition",
+    "description": "Professional audio recording, editing and mixing in pure Rust.",
+    "url": "/ArtCraft/audition/",
+    "aliases": [
+      "sound",
+      "audio",
+      "music"
+    ],
+    "icon": "https://getartcraft.com/images/apps/soundcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/soundcraft",
+    "version": "0.6.1"
+  },
+  {
     "name": "WordCraft",
     "title": "Word",
     "description": "Fast, open-source word processing, rebuilt from scratch in pure Rust.",
@@ -40,5 +150,32 @@
     "icon": "https://getartcraft.com/images/apps/wordcraft/icon.webp",
     "home": "https://getartcraft.com/apps/wordcraft",
     "version": "0.6.1"
+  },
+  {
+    "name": "DeckCraft",
+    "title": "PowerPoint",
+    "description": "Build and deliver dynamic slide presentations, in pure Rust.",
+    "url": "/ArtCraft/powerpoint/",
+    "aliases": [
+      "slide",
+      "deck",
+      "ppt"
+    ],
+    "icon": "https://getartcraft.com/images/apps/deckcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/deckcraft",
+    "version": "0.6.1"
+  },
+  {
+    "name": "FigCraft",
+    "title": "Figma",
+    "description": "Open-source interface design and prototyping, rebuilt in pure Rust.",
+    "url": "/ArtCraft/figma/",
+    "aliases": [
+      "fig",
+      "ui"
+    ],
+    "icon": "https://getartcraft.com/images/apps/figcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/figcraft",
+    "version": "0.5.1"
   }
 ]

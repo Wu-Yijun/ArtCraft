@@ -3,7 +3,20 @@ import { stat } from "node:fs/promises";
 import type { Apps, ItemInfo } from "./type.ts";
 import { pendingApps } from "./03-check-updates.ts";
 import { exists, fromRoot, remove } from "./utils/fs.ts";
-import { bold, cyan, dim, green, clearProgressBar, humanSize, log, progress, progressBar, step, yellow } from "./utils/log.ts";
+import {
+	bold,
+	clearProgressBar,
+	cyan,
+	dim,
+	green,
+	humanSize,
+	log,
+	progress,
+	progressBar,
+	red,
+	step,
+	yellow,
+} from "./utils/log.ts";
 import { downloadFile } from "./utils/net.ts";
 
 // ---------------------------------------------------------------------------
