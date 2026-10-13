@@ -7,17 +7,20 @@ import type { AppListEntry } from "../type.ts";
 
 /** Escapes a string for use inside a double quoted HTML attribute. */
 export function escapeHtml(text: string): string {
-	return text
-		.replace(/&/g, "&amp;")
-		.replace(/</g, "&lt;")
-		.replace(/>/g, "&gt;")
-		.replace(/"/g, "&quot;")
-		.replace(/'/g, "&#39;");
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 /** Escapes a string for use in HTML text content. */
 function escapeText(text: string): string {
-	return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(
+    />/g,
+    "&gt;",
+  );
 }
 
 /**
@@ -25,11 +28,13 @@ function escapeText(text: string): string {
  * GitHub Pages is a static host, so the redirect is done with a canonical link,
  * a meta refresh and a script fallback.
  */
-export function buildRedirectPage(options: { alias: string; target: string; name: string }): string {
-	const { alias, target, name } = options;
-	const title = escapeHtml(`${name} — redirecting`);
-	const to = escapeHtml(target);
-	return `<!DOCTYPE html>
+export function buildRedirectPage(
+  options: { alias: string; target: string; name: string },
+): string {
+  const { alias, target, name } = options;
+  const title = escapeHtml(`${name} — redirecting`);
+  const to = escapeHtml(target);
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -58,5 +63,5 @@ export function buildRedirectPage(options: { alias: string; target: string; name
 
 /** Serialises the app list written to deploy/apps.json. */
 export function buildAppList(entries: AppListEntry[]): string {
-	return `${JSON.stringify(entries, undefined, 2)}\n`;
+  return `${JSON.stringify(entries, undefined, 2)}\n`;
 }

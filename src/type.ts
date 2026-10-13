@@ -4,135 +4,135 @@
 
 /** The `website` block of config.yaml. */
 export interface ConfigWebsiteInfo {
-	title: string;
-	tagline: string;
-	description: string;
-	url: string;
-	baseurl: string;
-	icon: string;
+  title: string;
+  tagline: string;
+  description: string;
+  url: string;
+  baseurl: string;
+  icon: string;
 }
 
 /** One entry of the `schedule` block of config.yaml. */
 export interface ConfigScheduleInfo {
-	cron: string;
+  cron: string;
 }
 
 /** The `deploy` block of config.yaml. */
 export interface ConfigDeployInfo {
-	folder: string;
-	index: string;
-	"app-list": string;
+  folder: string;
+  index: string;
+  "app-list": string;
 }
 
 /** The `cache` block of config.yaml. */
 export interface ConfigCacheInfo {
-	folder: string;
-	versions: string;
+  folder: string;
+  versions: string;
 }
 
 /** The `download` block of config.yaml. */
 export interface ConfigDownloadInfo {
-	folder: string;
+  folder: string;
 }
 
 /** One entry of the `apps` block of config.yaml. */
 export interface ConfigAppInfo {
-	name: string;
-	title: string;
-	folder: string;
-	aliases: string[];
-	baseurl: string;
-	"github-repo": string;
-	home: string;
-	icon: string;
-	status: string;
-	description: string;
-	"release-pattern": string;
-	index: string;
+  name: string;
+  title: string;
+  folder: string;
+  aliases: string[];
+  baseurl: string;
+  "github-repo": string;
+  home: string;
+  icon: string;
+  status: string;
+  description: string;
+  "release-pattern": string;
+  index: string;
 }
 
 /** The whole config.yaml, after parsing and validating. */
 export interface Config {
-	website: ConfigWebsiteInfo;
-	schedule: ConfigScheduleInfo[];
-	deploy: ConfigDeployInfo;
-	cache: ConfigCacheInfo;
-	download: ConfigDownloadInfo;
-	apps: ConfigAppInfo[];
+  website: ConfigWebsiteInfo;
+  schedule: ConfigScheduleInfo[];
+  deploy: ConfigDeployInfo;
+  cache: ConfigCacheInfo;
+  download: ConfigDownloadInfo;
+  apps: ConfigAppInfo[];
 }
 
 /** An asset of a GitHub release, as far as this project cares about it. */
 export interface ReleaseAsset {
-	name: string;
-	size: number;
-	url: string;
-	browser_download_url: string;
-	content_type: string;
+  name: string;
+  size: number;
+  url: string;
+  browser_download_url: string;
+  content_type: string;
 }
 
 /** The latest release of a repository, as far as this project cares about it. */
 export interface ReleaseInfo {
-	tag_name: string;
-	name: string;
-	published_at: string;
-	html_url: string;
-	assets: ReleaseAsset[];
+  tag_name: string;
+  name: string;
+  published_at: string;
+  html_url: string;
+  assets: ReleaseAsset[];
 }
 
 /** Everything the pipeline knows about a single app. */
 export interface ItemInfo {
-	// --- from config.yaml ----------------------------------------------------
-	name: string;
-	title: string;
-	description: string;
-	home: string;
-	icon: string;
-	status: string;
-	folder: string;
-	baseurl: string;
-	aliases: string[];
-	repo: string;
-	patterns: RegExp[];
-	index: string;
+  // --- from config.yaml ----------------------------------------------------
+  name: string;
+  title: string;
+  description: string;
+  home: string;
+  icon: string;
+  status: string;
+  folder: string;
+  baseurl: string;
+  aliases: string[];
+  repo: string;
+  patterns: RegExp[];
+  index: string;
 
-	// --- from the cached versions.yaml --------------------------------------
-	cached_version?: string;
+  // --- from the cached versions.yaml --------------------------------------
+  cached_version?: string;
 
-	// --- from the latest GitHub release -------------------------------------
-	release_tag?: string;
-	release_url?: string;
-	published_at?: string;
-	artifact_name?: string;
-	artifact_url?: string;
-	artifact_size?: number;
-	artifact_version?: string;
+  // --- from the latest GitHub release -------------------------------------
+  release_tag?: string;
+  release_url?: string;
+  published_at?: string;
+  artifact_name?: string;
+  artifact_url?: string;
+  artifact_size?: number;
+  artifact_version?: string;
 
-	// --- computed ------------------------------------------------------------
-	source_folder?: string;
-	error?: string;
-	need_to_update: boolean;
-	downloaded: boolean;
-	extracted: boolean;
-	cached: boolean;
-	deployed: boolean;
+  // --- computed ------------------------------------------------------------
+  source_folder?: string;
+  error?: string;
+  need_to_update: boolean;
+  downloaded: boolean;
+  extracted: boolean;
+  cached: boolean;
+  deployed: boolean;
 }
 
 /** The shared state passed from step to step. */
 export interface Apps {
-	config: Config;
-	root: string;
-	list: ItemInfo[];
-	updated: boolean;
+  config: Config;
+  root: string;
+  list: ItemInfo[];
+  updated: boolean;
 }
 
 /** One record of deploy/apps.json, consumed by deploy/index.html. */
 export interface AppListEntry {
-	name: string;
-	title: string;
-	description: string;
-	url: string;
-	aliases: string[];
-	icon: string;
-	home: string;
-	version: string;
+  name: string;
+  title: string;
+  description: string;
+  url: string;
+  aliases: string[];
+  icon: string;
+  home: string;
+  version: string;
 }

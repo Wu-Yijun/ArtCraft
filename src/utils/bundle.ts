@@ -8,20 +8,24 @@
 
 /** Files that are never needed at runtime. */
 const EXCLUDED =
-	/(^|\/)(LICENSE[^/]*|LICENCE[^/]*|NOTICE[^/]*|README[^/]*|HOSTING[^/]*|ATTRIBUTION[^/]*|CHANGELOG[^/]*|CONTRIBUTING[^/]*|CODE_OF_CONDUCT[^/]*|SECURITY[^/]*)$/i;
+  /(^|\/)(LICENSE[^/]*|LICENCE[^/]*|NOTICE[^/]*|README[^/]*|HOSTING[^/]*|ATTRIBUTION[^/]*|CHANGELOG[^/]*|CONTRIBUTING[^/]*|CODE_OF_CONDUCT[^/]*|SECURITY[^/]*)$/i;
 
 /** Extensions that are never needed at runtime. */
-const EXCLUDED_EXTENSIONS = /\.(md|markdown|map|rs|toml|lock|ts|tsx|ya?ml|sh|ps1|bat|cmd)$/i;
+const EXCLUDED_EXTENSIONS =
+  /\.(md|markdown|map|rs|toml|lock|ts|tsx|ya?ml|sh|ps1|bat|cmd)$/i;
 
 /** True when a file, given by its bundle relative path, has to be published. */
 export function isPublishableFile(relativePath: string): boolean {
-	const name = relativePath.split("/").pop() ?? relativePath;
-	if (EXCLUDED.test(relativePath)) return false;
-	if (EXCLUDED_EXTENSIONS.test(name)) return false;
-	return true;
+  const name = relativePath.split("/").pop() ?? relativePath;
+  if (EXCLUDED.test(relativePath)) return false;
+  if (EXCLUDED_EXTENSIONS.test(name)) return false;
+  return true;
 }
 
 /** Builds the filter used when copying a bundle into the cache. */
-export function publishableFilter(): (absolutePath: string, relativePath: string) => boolean {
-	return (_absolutePath, relativePath) => isPublishableFile(relativePath);
+export function publishableFilter(): (
+  absolutePath: string,
+  relativePath: string,
+) => boolean {
+  return (_absolutePath, relativePath) => isPublishableFile(relativePath);
 }

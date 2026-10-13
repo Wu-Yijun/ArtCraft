@@ -13,13 +13,13 @@ const ENV_FILE = ".env";
 
 /** Reads .env and fills in the variables that are not set yet. */
 export function loadEnv(root: string): string | undefined {
-	const path = resolve(root, ENV_FILE);
-	if (!existsSync(path)) return undefined;
-	try {
-		// Node parses the file and only adds the missing variables.
-		process.loadEnvFile(path);
-	} catch {
-		return undefined;
-	}
-	return path;
+  const path = resolve(root, ENV_FILE);
+  if (!existsSync(path)) return undefined;
+  try {
+    // Node parses the file and only adds the missing variables.
+    process.loadEnvFile(path);
+  } catch {
+    return undefined;
+  }
+  return path;
 }
