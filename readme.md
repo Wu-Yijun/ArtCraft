@@ -26,7 +26,7 @@
 
 <p align="center">
   <a href="https://Wu-Yijun.github.io/ArtCraft/">
-    <img alt="ArtCraft — open the Crafting Apps in your browser" src="docs/hero.svg" width="100%">
+    <img alt="ArtCraft — open the Crafting Apps in your browser" src="static/hero.svg" width="100%">
   </a>
 </p>
 
