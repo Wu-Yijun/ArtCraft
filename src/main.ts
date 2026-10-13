@@ -9,6 +9,7 @@ import { extractReleases } from "./05-extract-releases.ts";
 import { updateCache } from "./06-update-cache.ts";
 import { copyToDeploy } from "./07-copy-to-deploy.ts";
 import { writeEntryPages } from "./08-write-entry-pages.ts";
+import { publishIcons } from "./09-app-icons.ts";
 import type { Apps } from "./type.ts";
 import {
   blue,
@@ -38,6 +39,7 @@ import { githubToken } from "./utils/net.ts";
 //   6. replace the cached copy of every updated app
 //   7. copy every cached app into the deploy folder
 //   8. write apps.json and the alias redirect pages used by the entry page
+//   9. publish the icon of the software every app reimplements
 // ---------------------------------------------------------------------------
 
 /** Repository root, derived from the location of this file. */
@@ -126,6 +128,7 @@ async function main(): Promise<void> {
     await updateCache(apps);
     await copyToDeploy(apps);
     await writeEntryPages(apps);
+    await publishIcons(apps);
   } catch (error) {
     fail("deploy failed", error);
   }

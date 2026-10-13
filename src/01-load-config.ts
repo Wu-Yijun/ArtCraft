@@ -53,6 +53,8 @@ function toItem(app: ConfigAppInfo): ItemInfo {
     description: app.description,
     home: app.home,
     icon: app.icon,
+    software_icon: app["software-icon"],
+    icon_crop: app["icon-crop"],
     status: app.status,
     folder: app.folder,
     baseurl: app.baseurl,
@@ -110,6 +112,8 @@ export async function loadConfig(root: string): Promise<Apps> {
       baseurl: withSlashes(required(app.baseurl, "baseurl", app.name)),
       home: required(app.home, "home", app.name),
       icon: required(app.icon, "icon", app.name),
+      "software-icon": app["software-icon"] ?? "",
+      "icon-crop": app["icon-crop"] ?? 1,
       status: app.status ?? "",
       description: required(app.description, "description", app.name),
       "github-repo": required(app["github-repo"], "github-repo", app.name),
@@ -162,4 +166,4 @@ export async function loadConfig(root: string): Promise<Apps> {
 }
 
 /** Total number of steps, used for the step banners. */
-export const STEP_TOTAL = 8;
+export const STEP_TOTAL = 9;

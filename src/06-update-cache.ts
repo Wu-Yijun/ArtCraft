@@ -46,7 +46,7 @@ async function cacheApp(
 /** Fills the cache with every freshly extracted bundle. */
 export async function updateCache(apps: Apps): Promise<void> {
   const pending = pendingApps(apps).filter((item) => item.extracted);
-  step(6, 8, "Update the app cache");
+  step(6, 9, "Update the app cache");
 
   const versionsFile = fromRoot(apps.root, apps.config.cache.versions);
   const cache = await readVersionCache(versionsFile);

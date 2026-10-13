@@ -79,7 +79,7 @@ async function unpack(
 /** Unpacks every pending bundle and records where its entry folder is. */
 export async function extractReleases(apps: Apps): Promise<void> {
   const pending = pendingApps(apps).filter((item) => item.downloaded);
-  step(5, 8, "Extract bundles");
+  step(5, 9, "Extract bundles");
 
   if (pending.length === 0) {
     log(`  ${yellow("nothing")} to extract`);

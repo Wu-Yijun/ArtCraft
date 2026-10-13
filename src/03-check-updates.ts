@@ -12,7 +12,7 @@ import { bold, cyan, dim, green, log, step, yellow } from "./utils/log.ts";
 
 /** Fills in `need_to_update` for every app and sets `apps.updated`. */
 export async function checkUpdates(apps: Apps): Promise<void> {
-  step(3, 8, "Compare with the local cache");
+  step(3, 9, "Compare with the local cache");
 
   const versionsFile = fromRoot(apps.root, apps.config.cache.versions);
   const cache = await readVersionCache(versionsFile);

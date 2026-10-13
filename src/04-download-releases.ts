@@ -81,7 +81,7 @@ async function download(
 /** Downloads every pending web bundle into the download folder. */
 export async function downloadReleases(apps: Apps): Promise<void> {
   const pending = pendingApps(apps);
-  step(4, 8, "Download web bundles");
+  step(4, 9, "Download web bundles");
 
   if (pending.length === 0) {
     log(`  ${yellow("nothing")} to download`);

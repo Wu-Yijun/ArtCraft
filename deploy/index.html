@@ -178,9 +178,13 @@
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     gap: 16px;
   }
+
+  /* the order of the apps in config.yaml fills this grid row by row */
+  @media (min-width: 700px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .grid { grid-template-columns: repeat(3, 1fr); } }
 
   .card {
     display: flex;
@@ -286,6 +290,21 @@
 
   footer .fine { margin: 0 auto; max-width: 760px; font-size: 12.5px; color: var(--faint); }
 </style>
+<!-- icons:start -->
+  <link rel="icon" type="image/svg+xml" href="icons/photoshop.svg" data-app="photoshop">
+  <link rel="icon" type="image/svg+xml" href="icons/lightroom.svg" data-app="lightroom">
+  <link rel="icon" type="image/svg+xml" href="icons/pdf.svg" data-app="pdf">
+  <link rel="icon" type="image/svg+xml" href="icons/word.svg" data-app="word">
+  <link rel="icon" type="image/svg+xml" href="icons/powerpoint.svg" data-app="powerpoint">
+  <link rel="icon" type="image/svg+xml" href="icons/excel.svg" data-app="excel">
+  <link rel="icon" type="image/svg+xml" href="icons/premiere.svg" data-app="premiere">
+  <link rel="icon" type="image/svg+xml" href="icons/aftereffects.svg" data-app="aftereffects">
+  <link rel="icon" type="image/svg+xml" href="icons/audition.svg" data-app="audition">
+  <link rel="icon" type="image/svg+xml" href="icons/illustrator.svg" data-app="illustrator">
+  <link rel="icon" type="image/svg+xml" href="icons/indesign.svg" data-app="indesign">
+  <link rel="icon" type="image/svg+xml" href="icons/figma.svg" data-app="figma">
+  <link rel="icon" type="image/svg+xml" href="icons/autocad.svg" data-app="autocad">
+<!-- icons:end -->
 </head>
 <body>
 <div class="wrap">

@@ -45,6 +45,8 @@ export interface ConfigAppInfo {
   "github-repo": string;
   home: string;
   icon: string;
+  "software-icon": string;
+  "icon-crop": number;
   status: string;
   description: string;
   "release-pattern": string;
@@ -87,6 +89,8 @@ export interface ItemInfo {
   description: string;
   home: string;
   icon: string;
+  software_icon?: string;
+  icon_crop?: number;
   status: string;
   folder: string;
   baseurl: string;

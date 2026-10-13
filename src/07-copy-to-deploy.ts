@@ -36,7 +36,7 @@ function keepFolders(apps: Apps): Set<string> {
 
 /** Copies the cache into the deploy folder. */
 export async function copyToDeploy(apps: Apps): Promise<void> {
-  step(7, 8, "Copy apps into the deploy folder");
+  step(7, 9, "Copy apps into the deploy folder");
 
   const deployFolder = fromRoot(apps.root, apps.config.deploy.folder);
   log(`  folder   ${apps.config.deploy.folder}`);

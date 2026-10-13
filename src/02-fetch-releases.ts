@@ -72,7 +72,7 @@ async function inspect(
 
 /** Fetches the latest release of every app and resolves its web bundle. */
 export async function fetchReleases(apps: Apps): Promise<void> {
-  step(2, 8, "Fetch latest releases from GitHub");
+  step(2, 9, "Fetch latest releases from GitHub");
   const total = apps.list.length;
 
   await group(

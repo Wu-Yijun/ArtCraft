@@ -16,6 +16,12 @@
 #                    the preferred one; a matching group, if any, is used as the
 #                    version number.
 #   index            Entry file name inside the published bundle.
+#   software-icon    Optional path to the official icon of the software the app
+#                    reimplements, shown on the entry page. Missing files are
+#                    skipped and `icon` is used instead.
+#   icon-crop        Optional fraction of the icon width to keep, for logos that
+#                    carry a wordmark on the side (0.18 keeps the leftmost part
+#                    of the AutoCAD logo and drops the "AutoCAD" text).
 #   aliases          Short, memorable paths (`photo`, `ps`, `ai`, ...) that are
 #                    served as a redirect to the canonical `baseurl`. Keep them
 #                    lowercase and unique across the whole app list.
@@ -52,6 +58,7 @@ apps:
   - name: PhotoCraft
     title: Photoshop
     folder: photoshop
+    software-icon: static/icons/photoshop.svg
     aliases:
       - photo
       - pic
@@ -72,55 +79,13 @@ apps:
       web(.*)zip
     index: index.html
 
-  - name: VectorCraft
-    title: Illustrator
-    folder: illustrator
-    aliases:
-      - vector
-      - ai
-      - draw
-      - svg
-    baseurl: /ArtCraft/illustrator/
-    github-repo: https://github.com/storytold/vectorcraft
-    home: https://getartcraft.com/apps/vectorcraft
-    icon: https://getartcraft.com/images/apps/vectorcraft/icon.webp
-    status: In development
-    description: Fast, open-source vector illustration, reimagined in pure Rust.
-    release-pattern: |
-      ^vectorcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^vectorcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
-
-  - name: FilmCraft
-    title: Premiere
-    folder: premiere
-    aliases:
-      - film
-      - video
-      - pr
-      - movie
-    baseurl: /ArtCraft/premiere/
-    github-repo: https://github.com/storytold/filmcraft
-    home: https://getartcraft.com/apps/filmcraft
-    icon: https://getartcraft.com/images/apps/filmcraft/icon.webp
-    status: In development
-    description: Professional, open-source video editing, rebuilt from scratch in Rust.
-    release-pattern: |
-      ^filmcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^filmcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
-
   - name: LightCraft
     title: Lightroom
     folder: lightroom
+    software-icon: static/icons/lightroom.svg
     aliases:
       - light
+      - lr
       - raw
       - darkroom
     baseurl: /ArtCraft/lightroom/
@@ -140,6 +105,7 @@ apps:
   - name: PdfCraft
     title: PDF
     folder: pdf
+    software-icon: static/icons/pdf.svg
     aliases:
       - acrobat
       - reader
@@ -159,9 +125,107 @@ apps:
       web(.*)zip
     index: index.html
 
+  - name: WordCraft
+    title: Word
+    folder: word
+    software-icon: static/icons/word.svg
+    aliases:
+      - doc
+      - docx
+      - wps
+      - writer
+      - rtf
+    baseurl: /ArtCraft/word/
+    github-repo: https://github.com/storytold/wordcraft
+    home: https://getartcraft.com/apps/wordcraft
+    icon: https://getartcraft.com/images/apps/wordcraft/icon.webp
+    status: In development
+    description: Fast, open-source word processing, rebuilt from scratch in pure Rust.
+    release-pattern: |
+      ^wordcraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^wordcraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+
+  - name: DeckCraft
+    title: PowerPoint
+    folder: powerpoint
+    software-icon: static/icons/powerpoint.svg
+    aliases:
+      - slide
+      - deck
+      - ppt
+      - pptx
+      - key
+      - slides
+    baseurl: /ArtCraft/powerpoint/
+    github-repo: https://github.com/storytold/deckcraft
+    home: https://getartcraft.com/apps/deckcraft
+    icon: https://getartcraft.com/images/apps/deckcraft/icon.webp
+    status: In development
+    description: Build and deliver dynamic slide presentations, in pure Rust.
+    release-pattern: |
+      ^deckcraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^deckcraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+
+  - name: GridCraft
+    title: Excel
+    folder: excel
+    software-icon: static/icons/excel.svg
+    aliases:
+      - xls
+      - xlsx
+      - spreadsheets
+      - sheet
+      - table
+      - grid
+    baseurl: /ArtCraft/excel/
+    github-repo: https://github.com/storytold/gridcraft
+    home: https://getartcraft.com/apps/gridcraft
+    icon: https://getartcraft.com/images/apps/gridcraft/icon.webp
+    status: In development
+    description: Fast, open-source spreadsheets and data analysis, rebuilt in pure Rust.
+    release-pattern: |
+      ^gridcraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^gridcraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+
+  - name: FilmCraft
+    title: Premiere
+    folder: premiere
+    software-icon: static/icons/premiere.svg
+    aliases:
+      - film
+      - video
+      - pr
+      - movie
+    baseurl: /ArtCraft/premiere/
+    github-repo: https://github.com/storytold/filmcraft
+    home: https://getartcraft.com/apps/filmcraft
+    icon: https://getartcraft.com/images/apps/filmcraft/icon.webp
+    status: In development
+    description: Professional, open-source video editing, rebuilt from scratch in Rust.
+    release-pattern: |
+      ^filmcraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^filmcraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+
   - name: EffectCraft
     title: After Effects
     folder: aftereffects
+    software-icon: static/icons/aftereffects.svg
     aliases:
       - effect
       - ae
@@ -182,9 +246,57 @@ apps:
       web(.*)zip
     index: index.html
 
+  - name: SoundCraft
+    title: Audition
+    folder: audition
+    software-icon: static/icons/audition.svg
+    aliases:
+      - sound
+      - au
+      - audio
+      - music
+      - daw
+    baseurl: /ArtCraft/audition/
+    github-repo: https://github.com/storytold/soundcraft
+    home: https://getartcraft.com/apps/soundcraft
+    icon: https://getartcraft.com/images/apps/soundcraft/icon.webp
+    status: In development
+    description: Professional audio recording, editing and mixing in pure Rust.
+    release-pattern: |
+      ^soundcraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^soundcraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+
+  - name: VectorCraft
+    title: Illustrator
+    folder: illustrator
+    software-icon: static/icons/illustrator.svg
+    aliases:
+      - vector
+      - ai
+      - draw
+      - svg
+    baseurl: /ArtCraft/illustrator/
+    github-repo: https://github.com/storytold/vectorcraft
+    home: https://getartcraft.com/apps/vectorcraft
+    icon: https://getartcraft.com/images/apps/vectorcraft/icon.webp
+    status: In development
+    description: Fast, open-source vector illustration, reimagined in pure Rust.
+    release-pattern: |
+      ^vectorcraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^vectorcraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+
   - name: DesignCraft
     title: InDesign
     folder: indesign
+    software-icon: static/icons/indesign.svg
     aliases:
       - design
       - layout
@@ -204,118 +316,10 @@ apps:
       web(.*)zip
     index: index.html
 
-  - name: GridCraft
-    title: Excel
-    folder: excel
-    aliases:
-      - xls
-      - spreadsheets
-      - sheet
-      - table
-      - grid
-    baseurl: /ArtCraft/excel/
-    github-repo: https://github.com/storytold/gridcraft
-    home: https://getartcraft.com/apps/gridcraft
-    icon: https://getartcraft.com/images/apps/gridcraft/icon.webp
-    status: In development
-    description: Fast, open-source spreadsheets and data analysis, rebuilt in pure Rust.
-    release-pattern: |
-      ^gridcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^gridcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
-
-  - name: CADCraft
-    title: AutoCAD
-    folder: autocad
-    aliases:
-      - cad
-      - dwg
-      - draft
-    baseurl: /ArtCraft/autocad/
-    github-repo: https://github.com/storytold/cadcraft
-    home: https://getartcraft.com/apps/cadcraft
-    icon: https://getartcraft.com/images/apps/cadcraft/icon.webp
-    status: In development
-    description: Fast, open-source computer-aided design and drafting in pure Rust.
-    release-pattern: |
-      ^cadcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^cadcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
-
-  - name: SoundCraft
-    title: Audition
-    folder: audition
-    aliases:
-      - sound
-      - audio
-      - music
-      - daw
-    baseurl: /ArtCraft/audition/
-    github-repo: https://github.com/storytold/soundcraft
-    home: https://getartcraft.com/apps/soundcraft
-    icon: https://getartcraft.com/images/apps/soundcraft/icon.webp
-    status: In development
-    description: Professional audio recording, editing and mixing in pure Rust.
-    release-pattern: |
-      ^soundcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^soundcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
-
-  - name: WordCraft
-    title: Word
-    folder: word
-    aliases:
-      - doc
-      - writer
-      - rtf
-    baseurl: /ArtCraft/word/
-    github-repo: https://github.com/storytold/wordcraft
-    home: https://getartcraft.com/apps/wordcraft
-    icon: https://getartcraft.com/images/apps/wordcraft/icon.webp
-    status: In development
-    description: Fast, open-source word processing, rebuilt from scratch in pure Rust.
-    release-pattern: |
-      ^wordcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^wordcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
-
-  - name: DeckCraft
-    title: PowerPoint
-    folder: powerpoint
-    aliases:
-      - slide
-      - deck
-      - ppt
-      - slides
-    baseurl: /ArtCraft/powerpoint/
-    github-repo: https://github.com/storytold/deckcraft
-    home: https://getartcraft.com/apps/deckcraft
-    icon: https://getartcraft.com/images/apps/deckcraft/icon.webp
-    status: In development
-    description: Build and deliver dynamic slide presentations, in pure Rust.
-    release-pattern: |
-      ^deckcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^deckcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
-
   - name: FigCraft
     title: Figma
     folder: figma
+    software-icon: static/icons/figma.svg
     aliases:
       - fig
       - ui
@@ -330,6 +334,29 @@ apps:
     release-pattern: |
       ^figcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^figcraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+
+  - name: CADCraft
+    title: AutoCAD
+    folder: autocad
+    software-icon: static/icons/autocad.svg
+    icon-crop: 0.18
+    aliases:
+      - cad
+      - dwg
+      - draft
+    baseurl: /ArtCraft/autocad/
+    github-repo: https://github.com/storytold/cadcraft
+    home: https://getartcraft.com/apps/cadcraft
+    icon: https://getartcraft.com/images/apps/cadcraft/icon.webp
+    status: In development
+    description: Fast, open-source computer-aided design and drafting in pure Rust.
+    release-pattern: |
+      ^cadcraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^cadcraft-web-(.*)\.zip$
       ^\w+-web-(.*)\.zip$
       web\.(.*)\.zip
       web(.*)zip

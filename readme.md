@@ -74,7 +74,7 @@ version of the same list.
 
 ## How it works
 
-`src/main.ts` runs eight steps, each one in its own file:
+`src/main.ts` runs nine steps, each one in its own file:
 
 | Step | File | What it does |
 | --- | --- | --- |
@@ -86,11 +86,12 @@ version of the same list.
 | 6 | `src/06-update-cache.ts` | Replaces the cached copy of every updated app and records the versions in `versions.yaml`. |
 | 7 | `src/07-copy-to-deploy.ts` | Copies every cached app into `deploy/`, dropping folders no app uses any more. |
 | 8 | `src/08-write-entry-pages.ts` | Writes `deploy/apps.json` for the entry page and one redirect page per alias. |
+| 9 | `src/09-app-icons.ts` | Publishes the official icon of the software each app reimplements and wires it into the cards and the head of the entry page. |
 
 Shared helpers live in `src/utils/`: logging and GitHub Actions outputs (`log.ts`), file system
 operations (`fs.ts`), HTTP requests with retries (`net.ts`), the release API and artifact matching
 (`github.ts`), zip extraction (`zip.ts`), the version cache (`cache.ts`), the published file filter
-(`bundle.ts`) and the generated HTML (`html.ts`).
+(`bundle.ts`), icon normalisation (`svg.ts`) and the generated HTML (`html.ts`).
 
 ### Folders
 
