@@ -30,6 +30,15 @@ export async function isDirectory(path: string): Promise<boolean> {
 	}
 }
 
+/** True when the path exists and is a regular file. */
+export async function isFile(path: string): Promise<boolean> {
+	try {
+		return (await stat(path)).isFile();
+	} catch {
+		return false;
+	}
+}
+
 /** Creates the directory and every missing parent. */
 export async function ensureDir(path: string): Promise<void> {
 	await mkdir(path, { recursive: true });

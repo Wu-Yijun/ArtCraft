@@ -32,9 +32,8 @@ export async function extractZip(archive: string, target: string): Promise<Extra
 	for (const entry of zip.getEntries()) {
 		const name = entry.entryName;
 		if (entry.isDirectory || JUNK.test(name)) continue;
-		const destination = `${target}/${name}`;
-		await ensureDir(parentOf(destination));
-		zip.extractEntryTo(entry, destination, false, true);
+		// maintainEntryPath keeps the folder layout of the bundle inside `target`.
+		zip.extractEntryTo(entry, target, true, true);
 		files.push(name);
 	}
 	return { target, files };
@@ -72,7 +71,6 @@ export async function renameEntry(folder: string, from: string, to: string): Pro
 	const source = joinPath(folder, from);
 	const destination = joinPath(folder, to);
 	if (!(await exists(source)) || (await exists(destination))) return false;
-	await ensureParentOf(destination);
 	await rename(source, destination);
 	return true;
 }
@@ -80,13 +78,4 @@ export async function renameEntry(folder: string, from: string, to: string): Pro
 /** Joins a folder and an entry name using the zip separator. */
 function joinPath(folder: string, name: string): string {
 	return folder.endsWith("/") ? `${folder}${name}` : `${folder}/${name}`;
-}
-
-function parentOf(path: string): string {
-	const index = path.lastIndexOf("/");
-	return index <= 0 ? path.slice(0, index + 1) || "/" : path.slice(0, index);
-}
-
-async function ensureParentOf(path: string): Promise<void> {
-	await ensureDir(parentOf(path));
 }

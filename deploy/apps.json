@@ -1,0 +1,44 @@
+[
+  {
+    "name": "PhotoCraft",
+    "title": "Photoshop",
+    "description": "The open-source image editor you already know how to use.",
+    "url": "/ArtCraft/photoshop/",
+    "aliases": [
+      "photo",
+      "pic",
+      "image",
+      "ps"
+    ],
+    "icon": "https://getartcraft.com/images/apps/photocraft/icon.webp",
+    "home": "https://getartcraft.com/apps/photocraft",
+    "version": "0.8.2"
+  },
+  {
+    "name": "FilmCraft",
+    "title": "Premiere",
+    "description": "Professional, open-source video editing, rebuilt from scratch in Rust.",
+    "url": "/ArtCraft/premiere/",
+    "aliases": [
+      "film",
+      "video",
+      "pr"
+    ],
+    "icon": "https://getartcraft.com/images/apps/filmcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/filmcraft",
+    "version": "0.7.2"
+  },
+  {
+    "name": "WordCraft",
+    "title": "Word",
+    "description": "Fast, open-source word processing, rebuilt from scratch in pure Rust.",
+    "url": "/ArtCraft/word/",
+    "aliases": [
+      "doc",
+      "writer"
+    ],
+    "icon": "https://getartcraft.com/images/apps/wordcraft/icon.webp",
+    "home": "https://getartcraft.com/apps/wordcraft",
+    "version": "0.6.1"
+  }
+]

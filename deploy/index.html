@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArtCraft · The Crafting Apps in your browser</title>
+<meta name="description" content="WordCraft, DeckCraft, GridCraft, PhotoCraft, VectorCraft, FilmCraft, LightCraft, PdfCraft, EffectCraft, DesignCraft, FigCraft, CADCraft and SoundCraft — open-source creative tools written from scratch in pure Rust, compiled to WebAssembly and running entirely in your browser.">
+<link rel="icon" href="https://getartcraft.com/artcraft-icon.svg" type="image/svg+xml">
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #0e0f13;
+    --bg-soft: #16181f;
+    --card: #1a1d25;
+    --line: #272b36;
+    --text: #eceef4;
+    --muted: #9aa1b1;
+    --accent: #ff7a45;
+    --accent-soft: rgba(255, 122, 69, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-image:
+      radial-gradient(900px 500px at 15% -10%, rgba(255, 122, 69, 0.16), transparent 60%),
+      radial-gradient(700px 500px at 90% 0%, rgba(96, 165, 250, 0.12), transparent 60%);
+    background-repeat: no-repeat;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 56px 20px 72px;
+  }
+
+  header.hero { text-align: center; margin-bottom: 44px; }
+
+  .logo {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 18px;
+    display: block;
+  }
+
+  h1 {
+    margin: 0 0 10px;
+    font-size: clamp(30px, 5vw, 44px);
+    letter-spacing: -0.02em;
+  }
+
+  h1 span { color: var(--accent); }
+
+  .tagline {
+    margin: 0 auto 18px;
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 17px;
+  }
+
+  .badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .badges li {
+    padding: 4px 12px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--bg-soft);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  .search {
+    max-width: 460px;
+    margin: 0 auto 28px;
+  }
+
+  .search input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    font: inherit;
+    font-size: 15px;
+    outline: none;
+  }
+
+  .search input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    display: flex;
+    gap: 14px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--card);
+    text-decoration: none;
+    transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+    background: #1e222c;
+  }
+
+  .card img {
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 12px;
+    background: var(--bg-soft);
+    object-fit: contain;
+  }
+
+  .card .body { min-width: 0; }
+
+  .card h2 {
+    margin: 0 0 2px;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .card .meta {
+    margin: 0 0 8px;
+    color: var(--accent);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14.5px;
+  }
+
+  .card .aliases {
+    margin: 10px 0 0;
+    color: #6f768a;
+    font-size: 12.5px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+
+  .empty {
+    padding: 48px 16px;
+    border: 1px dashed var(--line);
+    border-radius: 16px;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  footer {
+    margin-top: 56px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 14px;
+    text-align: center;
+  }
+
+  footer a { color: var(--muted); }
+
+  footer .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+
+  footer .links a:hover { color: var(--accent); }
+
+  footer .fine { font-size: 12.5px; color: #6f768a; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <img class="logo" src="https://getartcraft.com/artcraft-icon.svg" alt="ArtCraft">
+    <h1>Art<span>Craft</span></h1>
+    <p class="tagline">
+      Thirteen open-source creative tools, written from scratch in pure Rust and compiled to
+      WebAssembly. Every app below runs entirely in your browser — nothing is uploaded, nothing is
+      installed, nothing is tracked.
+    </p>
+    <ul class="badges">
+      <li>Open source</li>
+      <li>Pure Rust</li>
+      <li>WebAssembly</li>
+      <li>Runs offline</li>
+      <li>Free to use</li>
+    </ul>
+  </header>
+
+  <div class="search">
+    <input id="filter" type="search" placeholder="Filter the apps, e.g. “photoshop” or “audio”" autocomplete="off">
+  </div>
+
+  <main id="apps" class="grid" aria-live="polite">
+    <p class="empty">Loading the apps…</p>
+  </main>
+
+  <footer>
+    <div class="links">
+      <a href="https://getartcraft.com/">getartcraft.com</a>
+      <a href="https://github.com/storytold">github.com/storytold</a>
+      <a href="https://discord.gg/artcraft">Discord</a>
+      <a href="https://github.com/Wu-Yijun/ArtCraft">This page</a>
+    </div>
+    <p class="fine">
+      Every app is a clean-room reimplementation. Microsoft, Adobe, Autodesk and the other product
+      names below are trademarks of their respective owners and are used only to describe the
+      workflows these apps are compatible with. ArtCraft is not affiliated with, sponsored by or
+      endorsed by them.
+    </p>
+  </footer>
+</div>
+
+<script>
+  const APPS_URL = "apps.json";
+  const list = document.getElementById("apps");
+  const filter = document.getElementById("filter");
+  let apps = [];
+
+  function render(text) {
+    const query = (text ?? filter.value).trim().toLowerCase();
+    const visible = apps.filter((app) =>
+      [app.name, app.title, app.description, ...(app.aliases || [])]
+        .join(" ")
+        .toLowerCase()
+        .includes(query),
+    );
+
+    list.innerHTML = "";
+    if (visible.length === 0) {
+      const empty = document.createElement("p");
+      empty.className = "empty";
+      empty.textContent = "No app matches that search.";
+      list.appendChild(empty);
+      return;
+    }
+
+    for (const app of visible) {
+      const card = document.createElement("a");
+      card.className = "card";
+      card.href = app.url;
+
+      const icon = document.createElement("img");
+      icon.src = app.icon;
+      icon.alt = "";
+      icon.loading = "lazy";
+      icon.width = 48;
+      icon.height = 48;
+      icon.addEventListener("error", () => icon.remove());
+
+      const body = document.createElement("div");
+      body.className = "body";
+
+      const name = document.createElement("h2");
+      name.textContent = app.name;
+
+      const meta = document.createElement("p");
+      meta.className = "meta";
+      meta.textContent = app.title + (app.version ? " · v" + app.version : "");
+
+      const description = document.createElement("p");
+      description.textContent = app.description;
+
+      body.append(name, meta, description);
+
+      if (app.aliases && app.aliases.length > 0) {
+        const aliases = document.createElement("p");
+        aliases.className = "aliases";
+        aliases.textContent = "/" + app.aliases.join("  /");
+        body.appendChild(aliases);
+      }
+
+      card.append(icon, body);
+      list.appendChild(card);
+    }
+  }
+
+  filter.addEventListener("input", () => render());
+
+  fetch(APPS_URL)
+    .then((response) => {
+      if (!response.ok) throw new Error(response.status + " " + response.statusText);
+      return response.json();
+    })
+    .then((data) => {
+      apps = Array.isArray(data) ? data : [];
+      render("");
+    })
+    .catch((error) => {
+      list.innerHTML = "";
+      const message = document.createElement("p");
+      message.className = "empty";
+      message.textContent = "The app list could not be loaded (" + error.message + ").";
+      list.appendChild(message);
+    });
+</script>
+</body>
+</html>

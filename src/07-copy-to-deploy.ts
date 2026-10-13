@@ -1,7 +1,7 @@
 import { readdir } from "node:fs/promises";
 
 import type { Apps } from "./type.ts";
-import { copyDir, exists, fromRoot, isDirectory, recreateDir, remove } from "./utils/fs.ts";
+import { copyDir, fromRoot, isDirectory, recreateDir, remove } from "./utils/fs.ts";
 import { bold, cyan, dim, green, log, progress, step, yellow } from "./utils/log.ts";
 
 // ---------------------------------------------------------------------------
@@ -31,7 +31,7 @@ export async function copyToDeploy(apps: Apps): Promise<void> {
 		progress(index + 1, total, `${bold(item.name)} ${dim(item.baseurl)}`);
 
 		const source = fromRoot(apps.root, apps.config.cache.folder, item.folder);
-		if (!(await exists(source))) {
+		if (!(await isDirectory(source))) {
 			log(`          ${yellow("skip")} nothing cached for this app`);
 			continue;
 		}

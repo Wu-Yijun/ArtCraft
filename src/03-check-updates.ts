@@ -1,6 +1,6 @@
 import type { Apps } from "./type.ts";
 import { readVersionCache } from "./utils/cache.ts";
-import { exists, fromRoot } from "./utils/fs.ts";
+import { fromRoot, isFile } from "./utils/fs.ts";
 import { bold, cyan, dim, green, log, step, yellow } from "./utils/log.ts";
 
 // ---------------------------------------------------------------------------
@@ -26,7 +26,7 @@ export async function checkUpdates(apps: Apps): Promise<void> {
 		}
 		const indexFile = fromRoot(apps.root, apps.config.cache.folder, item.folder, item.index);
 		const cached = item.cached_version;
-		const complete = cached !== undefined && (await exists(indexFile));
+		const complete = cached !== undefined && (await isFile(indexFile));
 		item.need_to_update = !complete || cached !== item.artifact_version;
 		if (item.need_to_update) outdated += 1;
 
@@ -38,7 +38,7 @@ export async function checkUpdates(apps: Apps): Promise<void> {
 
 	const deployIndex = fromRoot(apps.root, apps.config.deploy.index);
 	const appList = fromRoot(apps.root, apps.config.deploy["app-list"]);
-	const deployReady = (await exists(deployIndex)) && (await exists(appList));
+	const deployReady = (await isFile(deployIndex)) && (await isFile(appList));
 	if (!deployReady) log(`  ${yellow("build")}  deploy folder is incomplete, it will be rebuilt`);
 	for (const item of failedApps(apps)) {
 		log(`  ${yellow("warn ")} ${item.name.padEnd(14)} ${dim(item.error ?? "not inspected")}, kept the deployed version`);

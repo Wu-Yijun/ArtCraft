@@ -1,5 +1,5 @@
 import type { AppListEntry, Apps } from "./type.ts";
-import { exists, fromRoot, recreateDir, writeText } from "./utils/fs.ts";
+import { fromRoot, isFile, recreateDir, writeText } from "./utils/fs.ts";
 import { buildAppList, buildRedirectPage } from "./utils/html.ts";
 import { bold, cyan, dim, green, log, step, yellow } from "./utils/log.ts";
 
@@ -56,7 +56,7 @@ export async function writeEntryPages(apps: Apps): Promise<void> {
 	if (entries.length === 0) throw new Error("no app was published, refusing to write an empty entry page");
 
 	const indexPath = fromRoot(apps.root, apps.config.deploy.index);
-	if (!(await exists(indexPath))) throw new Error(`missing entry page: ${apps.config.deploy.index}`);
+	if (!(await isFile(indexPath))) throw new Error(`missing entry page: ${apps.config.deploy.index}`);
 
 	await writeAppList(apps, entries);
 	await writeAliases(apps);
