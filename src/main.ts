@@ -10,7 +10,7 @@ import { updateCache } from "./06-update-cache.ts";
 import { copyToDeploy } from "./07-copy-to-deploy.ts";
 import { writeEntryPages } from "./08-write-entry-pages.ts";
 import type { Apps } from "./type.ts";
-import { blue, bold, cyan, dim, fail, green, group, log, setOutput, setSummary, yellow } from "./utils/log.ts";
+import { blue, bold, cyan, dim, fail, green, group, log, red, setOutput, setSummary, yellow } from "./utils/log.ts";
 import { loadEnv } from "./utils/env.ts";
 import { githubToken } from "./utils/net.ts";
 
@@ -32,12 +32,13 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 
 /** Markdown table shown on the GitHub Actions run page. */
 function buildSummary(apps: Apps): string {
+	const state = (item: Apps["list"][number]): string => {
+		if (item.cached) return "updated";
+		if (item.need_to_update) return "failed";
+		return item.artifact_version === undefined ? "unavailable" : "cached";
+	};
 	const rows = apps.list
-		.filter((item) => item.artifact_version !== undefined)
-		.map(
-			(item) =>
-				`| ${item.name} | \`${item.folder}\` | ${item.artifact_version} | ${item.need_to_update ? "updated" : "cached"} |`,
-		)
+		.map((item) => `| ${item.name} | \`${item.folder}\` | ${item.artifact_version ?? "-"} | ${state(item)} |`)
 		.join("\n");
 	return ["## ArtCraft deploy", "", "| App | Folder | Version | State |", "| --- | --- | --- | --- |", rows, ""].join("\n");
 }
@@ -67,6 +68,7 @@ async function main(): Promise<void> {
 	if (!apps.updated) {
 		log("");
 		log(green("up to date") + dim(` — nothing to do, ${apps.list.length} apps already cached`));
+		await setOutput("totalApps", String(apps.list.length));
 		await setOutput("hasUpdates", "false");
 		await setOutput("updatedApps", "0");
 		return;
@@ -87,15 +89,21 @@ async function main(): Promise<void> {
 		fail("deploy failed", error);
 	}
 
+	const updated = pending.filter((item) => item.cached);
+	const failed = pending.filter((item) => !item.cached);
 	log("");
-	log(yellow("changed") + dim(`  ${pending.length} app(s) updated`));
-	for (const item of pending) {
+	log((failed.length === 0 ? yellow("changed") : red("changed")) + dim(`  ${updated.length} of ${pending.length} app(s) updated`));
+	for (const item of updated) {
 		log(`         ${green(item.name.padEnd(14))} ${dim(`${item.cached_version ?? "none"} -> ${item.artifact_version ?? "?"}`)}`);
+	}
+	for (const item of failed) {
+		log(`         ${red(item.name.padEnd(14))} ${dim(`kept ${item.cached_version ?? "nothing"}, ${item.error ?? "failed"}`)}`);
 	}
 
 	await group("job summary", () => setSummary(buildSummary(apps)));
 	await setOutput("hasUpdates", "true");
-	await setOutput("updatedApps", String(pending.length));
+	await setOutput("updatedApps", String(updated.length));
+	await setOutput("failedApps", String(failed.length + unavailable.length));
 	await setOutput("totalApps", String(apps.list.length));
 
 	log("");
