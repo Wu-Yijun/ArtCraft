@@ -77,12 +77,7 @@ export async function renameEntry(folder: string, from: string, to: string): Pro
 	return true;
 }
 
-/** Every file of a folder, relative to it, sorted alphabetically. */
-export async function folderFiles(folder: string): Promise<string[]> {
-	if (!(await isDirectory(folder))) return [];
-	return await listFiles(folder);
-}
-
+/** Joins a folder and an entry name using the zip separator. */
 function joinPath(folder: string, name: string): string {
 	return folder.endsWith("/") ? `${folder}${name}` : `${folder}/${name}`;
 }

@@ -101,12 +101,15 @@ export interface ItemInfo {
 	// --- from the latest GitHub release -------------------------------------
 	release_tag?: string;
 	release_url?: string;
+	published_at?: string;
 	artifact_name?: string;
 	artifact_url?: string;
 	artifact_size?: number;
 	artifact_version?: string;
 
 	// --- computed ------------------------------------------------------------
+	source_folder?: string;
+	error?: string;
 	need_to_update: boolean;
 	downloaded: boolean;
 	extracted: boolean;

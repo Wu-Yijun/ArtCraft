@@ -144,7 +144,7 @@ apps:
     home: https://getartcraft.com/apps/pdfcraft
     icon: https://getartcraft.com/images/apps/pdfcraft/icon.webp
     status: Early alpha
-    description: The open-source PDF workbench: read, organize, combine, split and secure.
+    description: "The open-source PDF workbench: read, organize, combine, split and secure."
     release-pattern: |
       ^pdfcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^pdfcraft-web-(.*)\.zip$

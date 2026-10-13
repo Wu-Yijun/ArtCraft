@@ -14,13 +14,14 @@ const RETRIES = 3;
 const RETRY_DELAY_MS = 2_000;
 
 export class HttpError extends Error {
-	constructor(
-		readonly status: number,
-		readonly url: string,
-		message: string,
-	) {
+	readonly status: number;
+	readonly url: string;
+
+	constructor(status: number, url: string, message: string) {
 		super(message);
 		this.name = "HttpError";
+		this.status = status;
+		this.url = url;
 	}
 }
 

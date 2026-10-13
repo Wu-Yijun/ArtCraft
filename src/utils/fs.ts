@@ -101,10 +101,16 @@ export async function listFiles(dir: string): Promise<string[]> {
 	return found;
 }
 
-/** True when `dir` exists and contains at least one file. */
+/** True when `dir` exists and contains at least one entry. */
 export async function isNotEmpty(dir: string): Promise<boolean> {
 	if (!(await isDirectory(dir))) return false;
 	return (await readdir(dir)).length > 0;
+}
+
+/** Every file below `dir`, relative to it, sorted alphabetically. */
+export async function folderFiles(dir: string): Promise<string[]> {
+	if (!(await isDirectory(dir))) return [];
+	return await listFiles(dir);
 }
 
 /** Normalises a path to forward slashes, the separator used inside zip files. */

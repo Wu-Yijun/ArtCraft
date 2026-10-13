@@ -8,6 +8,7 @@
 /deploy/*/
 
 # Logs and editor noise
+*.env
 *.log
 .DS_Store
 Thumbs.db
