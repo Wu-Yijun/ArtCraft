@@ -8,7 +8,8 @@
       "photo",
       "pic",
       "image",
-      "ps"
+      "ps",
+      "pixels"
     ],
     "icon": "https://getartcraft.com/images/apps/photocraft/icon.webp",
     "home": "https://getartcraft.com/apps/photocraft",
@@ -22,7 +23,8 @@
     "aliases": [
       "vector",
       "ai",
-      "draw"
+      "draw",
+      "svg"
     ],
     "icon": "https://getartcraft.com/images/apps/vectorcraft/icon.webp",
     "home": "https://getartcraft.com/apps/vectorcraft",
@@ -36,7 +38,8 @@
     "aliases": [
       "film",
       "video",
-      "pr"
+      "pr",
+      "movie"
     ],
     "icon": "https://getartcraft.com/images/apps/filmcraft/icon.webp",
     "home": "https://getartcraft.com/apps/filmcraft",
@@ -49,7 +52,8 @@
     "url": "/ArtCraft/lightroom/",
     "aliases": [
       "light",
-      "raw"
+      "raw",
+      "darkroom"
     ],
     "icon": "https://getartcraft.com/images/apps/lightcraft/icon.webp",
     "home": "https://getartcraft.com/apps/lightcraft",
@@ -61,8 +65,10 @@
     "description": "The open-source PDF workbench: read, organize, combine, split and secure.",
     "url": "/ArtCraft/pdf/",
     "aliases": [
+      "acrobat",
       "reader",
-      "docs"
+      "docs",
+      "pdfedit"
     ],
     "icon": "https://getartcraft.com/images/apps/pdfcraft/icon.webp",
     "home": "https://getartcraft.com/apps/pdfcraft",
@@ -77,7 +83,8 @@
       "effect",
       "ae",
       "motion",
-      "vfx"
+      "vfx",
+      "comp"
     ],
     "icon": "https://getartcraft.com/images/apps/effectcraft/icon.webp",
     "home": "https://getartcraft.com/apps/effectcraft",
@@ -91,7 +98,8 @@
     "aliases": [
       "design",
       "layout",
-      "id"
+      "id",
+      "publish"
     ],
     "icon": "https://getartcraft.com/images/apps/designcraft/icon.webp",
     "home": "https://getartcraft.com/apps/designcraft",
@@ -103,9 +111,11 @@
     "description": "Fast, open-source spreadsheets and data analysis, rebuilt in pure Rust.",
     "url": "/ArtCraft/excel/",
     "aliases": [
-      "grid",
+      "xls",
+      "spreadsheets",
       "sheet",
-      "table"
+      "table",
+      "grid"
     ],
     "icon": "https://getartcraft.com/images/apps/gridcraft/icon.webp",
     "home": "https://getartcraft.com/apps/gridcraft",
@@ -118,7 +128,8 @@
     "url": "/ArtCraft/autocad/",
     "aliases": [
       "cad",
-      "dwg"
+      "dwg",
+      "draft"
     ],
     "icon": "https://getartcraft.com/images/apps/cadcraft/icon.webp",
     "home": "https://getartcraft.com/apps/cadcraft",
@@ -132,7 +143,8 @@
     "aliases": [
       "sound",
       "audio",
-      "music"
+      "music",
+      "daw"
     ],
     "icon": "https://getartcraft.com/images/apps/soundcraft/icon.webp",
     "home": "https://getartcraft.com/apps/soundcraft",
@@ -145,7 +157,8 @@
     "url": "/ArtCraft/word/",
     "aliases": [
       "doc",
-      "writer"
+      "writer",
+      "rtf"
     ],
     "icon": "https://getartcraft.com/images/apps/wordcraft/icon.webp",
     "home": "https://getartcraft.com/apps/wordcraft",
@@ -159,7 +172,8 @@
     "aliases": [
       "slide",
       "deck",
-      "ppt"
+      "ppt",
+      "slides"
     ],
     "icon": "https://getartcraft.com/images/apps/deckcraft/icon.webp",
     "home": "https://getartcraft.com/apps/deckcraft",
@@ -172,7 +186,9 @@
     "url": "/ArtCraft/figma/",
     "aliases": [
       "fig",
-      "ui"
+      "ui",
+      "ux",
+      "prototype"
     ],
     "icon": "https://getartcraft.com/images/apps/figcraft/icon.webp",
     "home": "https://getartcraft.com/apps/figcraft",

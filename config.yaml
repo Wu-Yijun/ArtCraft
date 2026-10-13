@@ -57,6 +57,7 @@ apps:
       - pic
       - image
       - ps
+      - pixels
     baseurl: /ArtCraft/photoshop/
     github-repo: https://github.com/storytold/photocraft
     home: https://getartcraft.com/apps/photocraft
@@ -78,6 +79,7 @@ apps:
       - vector
       - ai
       - draw
+      - svg
     baseurl: /ArtCraft/illustrator/
     github-repo: https://github.com/storytold/vectorcraft
     home: https://getartcraft.com/apps/vectorcraft
@@ -99,6 +101,7 @@ apps:
       - film
       - video
       - pr
+      - movie
     baseurl: /ArtCraft/premiere/
     github-repo: https://github.com/storytold/filmcraft
     home: https://getartcraft.com/apps/filmcraft
@@ -119,6 +122,7 @@ apps:
     aliases:
       - light
       - raw
+      - darkroom
     baseurl: /ArtCraft/lightroom/
     github-repo: https://github.com/storytold/lightcraft
     home: https://getartcraft.com/apps/lightcraft
@@ -137,8 +141,10 @@ apps:
     title: PDF
     folder: pdf
     aliases:
+      - acrobat
       - reader
       - docs
+      - pdfedit
     baseurl: /ArtCraft/pdf/
     github-repo: https://github.com/storytold/pdfcraft
     home: https://getartcraft.com/apps/pdfcraft
@@ -161,6 +167,7 @@ apps:
       - ae
       - motion
       - vfx
+      - comp
     baseurl: /ArtCraft/aftereffects/
     github-repo: https://github.com/storytold/effectcraft
     home: https://getartcraft.com/apps/effectcraft
@@ -182,6 +189,7 @@ apps:
       - design
       - layout
       - id
+      - publish
     baseurl: /ArtCraft/indesign/
     github-repo: https://github.com/storytold/designcraft
     home: https://getartcraft.com/apps/designcraft
@@ -200,9 +208,11 @@ apps:
     title: Excel
     folder: excel
     aliases:
-      - grid
+      - xls
+      - spreadsheets
       - sheet
       - table
+      - grid
     baseurl: /ArtCraft/excel/
     github-repo: https://github.com/storytold/gridcraft
     home: https://getartcraft.com/apps/gridcraft
@@ -223,6 +233,7 @@ apps:
     aliases:
       - cad
       - dwg
+      - draft
     baseurl: /ArtCraft/autocad/
     github-repo: https://github.com/storytold/cadcraft
     home: https://getartcraft.com/apps/cadcraft
@@ -244,6 +255,7 @@ apps:
       - sound
       - audio
       - music
+      - daw
     baseurl: /ArtCraft/audition/
     github-repo: https://github.com/storytold/soundcraft
     home: https://getartcraft.com/apps/soundcraft
@@ -264,6 +276,7 @@ apps:
     aliases:
       - doc
       - writer
+      - rtf
     baseurl: /ArtCraft/word/
     github-repo: https://github.com/storytold/wordcraft
     home: https://getartcraft.com/apps/wordcraft
@@ -285,6 +298,7 @@ apps:
       - slide
       - deck
       - ppt
+      - slides
     baseurl: /ArtCraft/powerpoint/
     github-repo: https://github.com/storytold/deckcraft
     home: https://getartcraft.com/apps/deckcraft
@@ -305,6 +319,8 @@ apps:
     aliases:
       - fig
       - ui
+      - ux
+      - prototype
     baseurl: /ArtCraft/figma/
     github-repo: https://github.com/storytold/figcraft
     home: https://getartcraft.com/apps/figcraft

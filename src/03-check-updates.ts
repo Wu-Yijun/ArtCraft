@@ -1,6 +1,8 @@
+import { readdir } from "node:fs/promises";
+
 import type { Apps, ItemInfo } from "./type.ts";
 import { readVersionCache } from "./utils/cache.ts";
-import { fromRoot, isFile } from "./utils/fs.ts";
+import { fromRoot, isDirectory, isFile } from "./utils/fs.ts";
 import { bold, cyan, dim, green, log, step, yellow } from "./utils/log.ts";
 
 // ---------------------------------------------------------------------------
@@ -47,10 +49,23 @@ export async function checkUpdates(apps: Apps): Promise<void> {
 
   const deployIndex = fromRoot(apps.root, apps.config.deploy.index);
   const appList = fromRoot(apps.root, apps.config.deploy["app-list"]);
-  const deployReady = (await isFile(deployIndex)) && (await isFile(appList));
-  if (!deployReady) {
+  const state = await inspectDeploy(apps, deployIndex, appList);
+  if (state.missing.length > 0) {
     log(
-      `  ${yellow("build")}  deploy folder is incomplete, it will be rebuilt`,
+      `  ${
+        yellow("build")
+      }  deploy folder misses ${state.missing.length} path(s): ${
+        dim(state.missing.join(" "))
+      }`,
+    );
+  }
+  if (state.stale.length > 0) {
+    log(
+      `  ${
+        yellow("clean")
+      }  deploy folder has ${state.stale.length} unused path(s): ${
+        dim(state.stale.join(" "))
+      }`,
     );
   }
   for (const item of failedApps(apps)) {
@@ -61,7 +76,7 @@ export async function checkUpdates(apps: Apps): Promise<void> {
     );
   }
 
-  apps.updated = outdated > 0 || !deployReady;
+  apps.updated = outdated > 0 || state.rebuild;
 
   log("");
   log(
@@ -73,6 +88,45 @@ export async function checkUpdates(apps: Apps): Promise<void> {
       apps.updated ? bold(green("work to do")) : bold(green("nothing to do"))
     }`,
   );
+}
+
+/** The paths the deploy folder has to contain: one folder per app and alias. */
+function expectedPaths(apps: Apps): Set<string> {
+  const names = new Set<string>();
+  for (const item of apps.list) {
+    names.add(item.folder);
+    for (const alias of item.aliases) names.add(alias);
+  }
+  return names;
+}
+
+/**
+ * Looks at what is already published. New apps, renamed folders and freshly
+ * added aliases are picked up here, even when no app was released in between,
+ * so a config change alone still triggers a rebuild.
+ */
+async function inspectDeploy(
+  apps: Apps,
+  deployIndex: string,
+  appList: string,
+): Promise<{ rebuild: boolean; missing: string[]; stale: string[] }> {
+  const folder = fromRoot(apps.root, apps.config.deploy.folder);
+  const expected = expectedPaths(apps);
+
+  let present = new Set<string>();
+  if (await isDirectory(folder)) {
+    const entries = await readdir(folder, { withFileTypes: true });
+    present = new Set(
+      entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name),
+    );
+  }
+
+  const missing = [...expected].filter((name) => !present.has(name));
+  const stale = [...present].filter((name) => !expected.has(name));
+  const rebuild = missing.length > 0 || stale.length > 0 ||
+    !(await isFile(deployIndex)) || !(await isFile(appList));
+
+  return { rebuild, missing, stale };
 }
 
 /** The apps that have to be downloaded, extracted and cached. */
