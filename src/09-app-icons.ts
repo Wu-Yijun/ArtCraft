@@ -7,7 +7,7 @@ import {
   writeText,
 } from "./utils/fs.ts";
 import { dim, green, log, step, yellow } from "./utils/log.ts";
-import { normalizeSvg } from "./utils/svg.ts";
+import { applyViewBox } from "./utils/svg.ts";
 
 // ---------------------------------------------------------------------------
 // Step 9 — publish the official icon of the software every app reimplements.
@@ -57,7 +57,7 @@ async function publishIcon(
   // already published.
   const published = await isFile(target);
   if (!published || item.cached === true) {
-    const svg = normalizeSvg(await readText(source), item.icon_crop ?? 1);
+    const svg = applyViewBox(await readText(source), item.icon_viewbox);
     await writeText(target, svg);
     log(
       `  ${green("icon   ")} ${item.name.padEnd(14)} ${dim(publicPath)}`,
@@ -99,10 +99,10 @@ async function patchAppList(
 const ICON_LINK = /<link\b[^>]*\brel=["']?icon["']?[^>]*>/gi;
 
 /** Removes the generated block and the icon links the document already has. */
-function clean(html: string, dropExisting: boolean): string {
+function clean(html: string): string {
   const block = new RegExp(`${MARK_START}[\\s\\S]*?${MARK_END}\\s*`).exec(html);
   if (block !== null) html = html.replace(block[0], "");
-  return dropExisting ? html.replace(ICON_LINK, "") : html;
+  return html.replace(ICON_LINK, "");
 }
 
 /** Puts a generated block of link tags right before `</head>`. */
@@ -115,37 +115,6 @@ async function writeBlock(
     links.map((link) => `  ${link}`).join("\n")
   }\n${MARK_END}\n`;
   await writeText(path, html.replace("</head>", `${block}</head>`));
-}
-
-/** Adds the icon links to the head of the entry page when they are missing. */
-async function injectHeadIcons(
-  apps: Apps,
-  icons: Map<string, string>,
-): Promise<void> {
-  if (icons.size === 0) return;
-  const path = fromRoot(apps.root, apps.config.deploy.index);
-  if (!(await isFile(path))) return;
-
-  let html = await readText(path);
-  if (!html.includes("</head>")) {
-    log(`  ${yellow("miss ")} ${dim("no </head> in the entry page")}`);
-    return;
-  }
-
-  // Drop a previous block first, so renamed apps cannot leave a stale link.
-  html = clean(html, false);
-
-  const links = [...icons.entries()].map(([url, icon]) => {
-    const folder = url.split("/").filter((part) => part !== "")[1] ?? icon;
-    return `<link rel="icon" type="image/svg+xml" href="${icon}" data-app="${folder}">`;
-  });
-
-  await writeBlock(path, links, html);
-  log(
-    `  ${green("head   ")} ${
-      dim(`${icons.size} icon link(s) in ${apps.config.deploy.index}`)
-    }`,
-  );
 }
 
 /**
@@ -183,13 +152,15 @@ async function injectAppIcon(
     return;
   }
 
-  html = clean(html, true);
+  html = clean(html);
 
   // The app folder sits one level below the icons folder.
   const href = `../${icon}`;
-  await writeBlock(path, [
-    `<link rel="icon" type="image/svg+xml" href="${href}">`,
-  ], html);
+  await writeBlock(
+    path,
+    [`<link rel="icon" type="image/svg+xml" href="${href}">`],
+    html,
+  );
   log(
     `  ${green("head   ")} ${item.name.padEnd(14)} ${
       dim(`${item.folder}/${item.index} -> ${href}`)
@@ -197,7 +168,12 @@ async function injectAppIcon(
   );
 }
 
-/** Publishes every configured software icon and wires it into the entry page. */
+/**
+ * Publishes every configured software icon: the cards of the entry page get
+ * them through apps.json, and the page of each app gets its own favicon. The
+ * entry page keeps the site icon in its head, a browser would only show one of
+ * the links anyway.
+ */
 export async function publishIcons(apps: Apps): Promise<void> {
   step(9, 9, "Publish the software icons");
 
@@ -212,7 +188,6 @@ export async function publishIcons(apps: Apps): Promise<void> {
 
   await ensureDir(fromRoot(apps.root, apps.config.deploy.folder, ICON_FOLDER));
   await patchAppList(apps, icons);
-  await injectHeadIcons(apps, icons);
 
   log("");
   log(

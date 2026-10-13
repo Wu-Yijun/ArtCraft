@@ -1,11 +1,13 @@
 // ---------------------------------------------------------------------------
 // A very small SVG helper.
 //
-// The official software logos have wildly different canvases: most are square,
-// the Figma logo is a tall rectangle and the AutoCAD logo is a wide lockup with
-// a wordmark next to the mark. Normalising them to one square viewBox keeps the
-// entry page tidy: the artwork ends up centred in the box and every icon fills
-// it the same way.
+// The official software logos come with wildly different canvases: most are
+// square, the Figma logo is a tall rectangle and the AutoCAD logo is a wide
+// lockup with a wordmark next to the mark. `icon-viewbox` in config.yaml says
+// which part of the canvas to keep, so an icon can be trimmed to its mark.
+//
+// The file is only touched when the key is set: a logo that needs no trimming
+// is published exactly as it was downloaded.
 // ---------------------------------------------------------------------------
 
 /** The four numbers of a `viewBox` attribute. */
@@ -16,54 +18,48 @@ export interface ViewBox {
   height: number;
 }
 
-/** A square viewBox, centred on the artwork of the original one. */
-export function squareViewBox(box: ViewBox, crop: number): ViewBox {
-  const kept = { ...box, width: box.width * Math.min(Math.max(crop, 0.01), 1) };
-  const side = Math.max(kept.width, kept.height);
-  return {
-    x: kept.x + (kept.width - side) / 2,
-    y: kept.y + (kept.height - side) / 2,
-    width: side,
-    height: side,
-  };
-}
-
 /** Rounds a number the way an SVG editor would: no trailing zeros. */
 function num(value: number): string {
   const rounded = Math.round(value * 1000) / 1000;
   return Object.is(rounded, -0) ? "0" : String(rounded);
 }
 
-/** Reads the `viewBox` of an SVG document. */
-export function readViewBox(svg: string): ViewBox | undefined {
-  const match = svg.match(/viewBox\s*=\s*["']([^"']+)["']/);
-  if (match === null) return undefined;
-  const parts = (match[1] ?? "").trim().split(/[\s,]+/).map(Number);
-  if (parts.length !== 4 || parts.some((part) => !Number.isFinite(part))) {
-    return undefined;
-  }
+/** Parses `"x y width height"` as written in config.yaml. */
+export function parseViewBox(text: string): ViewBox | undefined {
+  const parts = text.trim().split(/[\s,]+/).map(Number);
+  if (parts.length !== 4) return undefined;
+  if (parts.some((part) => !Number.isFinite(part))) return undefined;
   const [x, y, width, height] = parts as [number, number, number, number];
-  if (width <= 0 || height <= 0) return undefined;
+  if ((width ?? 0) <= 0 || (height ?? 0) <= 0) return undefined;
   return { x: x ?? 0, y: y ?? 0, width, height };
 }
 
+const VIEW_BOX = /viewBox\s*=\s*["'][^"']*["']/;
+const WIDTH = /<svg\b[^>]*\swidth\s*=\s*["'][^"']*["']/;
+const HEIGHT = /<svg\b[^>]*\sheight\s*=\s*["'][^"']*["']/;
+
 /**
- * Returns the SVG with a square, centred viewBox. `crop` keeps only the leftmost
- * fraction of the canvas, which drops the wordmark of a wide logo. A document
- * without a usable viewBox is returned untouched.
+ * Replaces the viewBox of an SVG document with `viewBox` and gives the document
+ * the matching width and height. Without a viewBox the document is returned
+ * untouched, icons and their licences included.
  */
-export function normalizeSvg(svg: string, crop = 1): string {
-  const box = readViewBox(svg);
+export function applyViewBox(svg: string, viewBox: string | undefined): string {
+  if (viewBox === undefined || viewBox.trim() === "") return svg;
+  const box = parseViewBox(viewBox);
   if (box === undefined) return svg;
-  const square = squareViewBox(box, crop);
-  if (
-    square.x === box.x && square.y === box.y && square.width === box.width &&
-    square.height === box.height
-  ) {
-    return svg;
-  }
-  const viewBox = `${num(square.x)} ${num(square.y)} ${num(square.width)} ${
-    num(square.height)
-  }`;
-  return svg.replace(/viewBox\s*=\s*["'][^"']+["']/, `viewBox="${viewBox}"`);
+
+  const value = `${num(box.x)} ${num(box.y)} ${num(box.width)} ${num(box.height)}`;
+  let out = VIEW_BOX.test(svg)
+    ? svg.replace(VIEW_BOX, `viewBox="${value}"`)
+    : svg.replace(/<svg\b/, `<svg viewBox="${value}"`);
+
+  const size = `${num(box.width)}`;
+  out = WIDTH.test(out)
+    ? out.replace(WIDTH, (match) => match.replace(/width\s*=\s*["'][^"']*["']/, `width="${size}"`))
+    : out.replace(/<svg\b/, `<svg width="${size}"`);
+  out = HEIGHT.test(out)
+    ? out.replace(HEIGHT, (match) => match.replace(/height\s*=\s*["'][^"']*["']/, `height="${size}"`))
+    : out.replace(/<svg\b/, `<svg height="${size}"`);
+
+  return out;
 }

@@ -19,9 +19,11 @@
 #   software-icon    Optional path to the official icon of the software the app
 #                    reimplements, shown on the entry page. Missing files are
 #                    skipped and `icon` is used instead.
-#   icon-crop        Optional fraction of the icon width to keep, for logos that
-#                    carry a wordmark on the side (0.18 keeps the leftmost part
-#                    of the AutoCAD logo and drops the "AutoCAD" text).
+#   icon-viewbox     Optional `x y width height` for the icon, for logos whose
+#                    canvas is not the mark itself (the AutoCAD wordmark, the
+#                    tall Figma logo). It replaces the viewBox of the file and
+#                    sets its width and height. Without the key the icon is
+#                    published untouched.
 #   aliases          Short, memorable paths (`photo`, `ps`, `ai`, ...) that are
 #                    served as a redirect to the canonical `baseurl`. Keep them
 #                    lowercase and unique across the whole app list.
@@ -155,11 +157,11 @@ apps:
     software-icon: static/icons/powerpoint.svg
     aliases:
       - slide
+      - slides
       - deck
       - ppt
       - pptx
       - key
-      - slides
     baseurl: /ArtCraft/powerpoint/
     github-repo: https://github.com/storytold/deckcraft
     home: https://getartcraft.com/apps/deckcraft
@@ -320,6 +322,7 @@ apps:
     title: Figma
     folder: figma
     software-icon: static/icons/figma.svg
+    icon-viewbox: -70 -10 320 320 # absolute viewBox 
     aliases:
       - fig
       - ui
@@ -343,7 +346,7 @@ apps:
     title: AutoCAD
     folder: autocad
     software-icon: static/icons/autocad.svg
-    icon-crop: 0.18
+    icon-viewbox: 0 0 400 400 # absolute viewBox 
     aliases:
       - cad
       - dwg
