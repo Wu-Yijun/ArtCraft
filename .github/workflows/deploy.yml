@@ -5,14 +5,16 @@ on:
     branches:
       - main
   schedule:
-    - cron: '54 3 * * *'
+    - cron: '56 4 * * *'
+  workflow_dispatch:
 
 jobs:
   check-and-deploy:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       pages: write
-      id-token: write 
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -22,7 +24,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 1
-      
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
 
@@ -31,7 +33,7 @@ jobs:
         with:
           node-version: '26'
           cache: 'pnpm'
-      
+
       - name: Set up PNPM
         run: pnpm ci
 
@@ -46,7 +48,9 @@ jobs:
       - name: Run scripts
         id: updates
         run: node src/main.ts
-      
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       #### Cache ArtCraft Apps ####
       - name: Cache ArtCraft Apps
         if: steps.updates.outputs.hasUpdates == 'true'

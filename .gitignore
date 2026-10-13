@@ -1,6 +1,10 @@
 # Dependencies
 /node_modules/
 
+# Local secrets and run logs
+.env
+/logs/
+
 # Downloaded apps, extracted files and the local cache
 /artcraft-apps/
 

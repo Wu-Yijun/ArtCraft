@@ -3,7 +3,7 @@ import { stat } from "node:fs/promises";
 import type { Apps, ItemInfo } from "./type.ts";
 import { pendingApps } from "./03-check-updates.ts";
 import { exists, fromRoot, remove } from "./utils/fs.ts";
-import { bold, cyan, dim, green, humanSize, log, progress, step, yellow } from "./utils/log.ts";
+import { bold, cyan, dim, green, clearProgressBar, humanSize, log, progress, progressBar, step, yellow } from "./utils/log.ts";
 import { downloadFile } from "./utils/net.ts";
 
 // ---------------------------------------------------------------------------
@@ -19,7 +19,7 @@ async function download(apps: Apps, item: ItemInfo, index: number, total: number
 	if (artifactName === undefined || artifactUrl === undefined) return;
 
 	const target = fromRoot(apps.root, apps.config.download.folder, artifactName);
-	progress(index + 1, total, `${bold(item.name)} ${dim(artifactName)}`);
+	progress(index, total, `${bold(item.name)} ${dim(artifactName)}`);
 
 	if ((await exists(target)) && item.artifact_size !== undefined && (await stat(target)).size === item.artifact_size) {
 		item.downloaded = true;
@@ -40,10 +40,10 @@ async function download(apps: Apps, item: ItemInfo, index: number, total: number
 		}
 		lastLine = now;
 		const done = size > 0 ? `${Math.min(100, Math.floor((bytes / size) * 100))}%` : humanSize(bytes);
-		process.stdout.write(`\r          ${cyan(done.padStart(5))} ${dim(humanSize(bytes))}    `);
+		progressBar(`${cyan(done.padStart(5))} ${dim(humanSize(bytes))}`);
 	});
-	process.stdout.write("\r          ");
-	log(`${green("downloaded")} ${dim(`${humanSize(received)} -> ${artifactName}`)}`);
+	clearProgressBar();
+	log(`${green("downloaded")} ${dim(humanSize(received))} ${bold(item.name.padEnd(14))} ${dim(artifactName)}`);
 	item.downloaded = true;
 }
 

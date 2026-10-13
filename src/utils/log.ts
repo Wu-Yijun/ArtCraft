@@ -1,12 +1,12 @@
-import { appendFile, mkdir } from "node:fs/promises";
+import { appendFileSync, mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 
 // ---------------------------------------------------------------------------
 // Logging helpers.
 //
-// Everything is written to stderr-free stdout so the GitHub Actions log stays
-// readable, and step outputs are additionally published through the workflow
-// command / GITHUB_OUTPUT channels.
+// Everything goes to stdout, which makes the pipeline readable in the GitHub
+// Actions log and easy to capture into a file when debugging locally, e.g.
+// `node src/main.ts > logs/run.log 2>&1`.
 // ---------------------------------------------------------------------------
 
 const COLOR = process.env.NO_COLOR ? false : process.stdout.isTTY === true;
@@ -24,21 +24,43 @@ export const blue = (text: string): string => paint(34, text);
 export const magenta = (text: string): string => paint(35, text);
 export const cyan = (text: string): string => paint(36, text);
 
+/** Writes a chunk to stdout. */
+function write(text: string): void {
+	process.stdout.write(text);
+}
+
+/**
+ * Writes a chunk that is meant to be overwritten in place, such as a download
+ * progress bar. It is only useful on a terminal, so it is skipped when stdout
+ * is captured into a file.
+ */
+function transient(text: string): void {
+	if (process.stdout.isTTY === true) process.stdout.write(text);
+}
+
 /** Prints an ordinary line of output. */
 export function log(message = ""): void {
-	process.stdout.write(`${message}\n`);
+	write(`${message}\n`);
 }
 
 /** Prints a line only when VERBOSE is enabled. */
 export function debug(message: string): void {
-	if (process.env.VERBOSE === "1") {
-		process.stdout.write(`${dim(`[debug] ${message}`)}\n`);
-	}
+	if (process.env.VERBOSE === "1") log(`${dim(`[debug] ${message}`)}`);
 }
 
 /** Prints the `n/total` counter used while walking through the app list. */
 export function progress(current: number, total: number, label: string): void {
 	log(`  ${cyan(`[${current}/${total}]`)} ${label}`);
+}
+
+/** Updates a progress bar in place. */
+export function progressBar(text: string): void {
+	transient(`\r          ${text}    `);
+}
+
+/** Erases a progress bar written by `progressBar`. */
+export function clearProgressBar(): void {
+	transient("\r          ");
 }
 
 /** Prints the banner of a pipeline step. */
@@ -50,11 +72,20 @@ export function step(index: number, total: number, title: string): void {
 /** Prints an error and exits with a non-zero status code. */
 export function fail(message: string, error?: unknown): never {
 	log(`${red("error")} ${message}`);
-	if (error !== undefined) {
-		const detail = error instanceof Error ? (error.stack ?? error.message) : String(error);
-		log(dim(detail));
-	}
+	if (error !== undefined) log(dim(describe(error)));
 	process.exit(1);
+}
+
+/** Renders an error and everything that caused it. */
+function describe(error: unknown): string {
+	if (!(error instanceof Error)) return String(error);
+	const lines = [error.stack ?? error.message];
+	let cause: unknown = (error as { cause?: unknown }).cause;
+	while (cause !== undefined && cause !== null) {
+		lines.push(`  caused by: ${cause instanceof Error ? (cause.stack ?? cause.message) : String(cause)}`);
+		cause = cause instanceof Error ? (cause as { cause?: unknown }).cause : undefined;
+	}
+	return lines.join("\n");
 }
 
 /** Human readable byte size, e.g. `13.4 MB`. */
@@ -72,23 +103,23 @@ export function humanSize(bytes: number): string {
 
 /**
  * Publishes a step output so `.github/workflows/deploy.yml` can branch on it.
- * Uses the GITHUB_OUTPUT file when running inside Actions and degrades to a
- * plain `key=value` line everywhere else.
+ * Uses the GITHUB_OUTPUT file when running inside Actions and prints the value
+ * everywhere else, which keeps local runs readable.
  */
 export async function setOutput(name: string, value: string): Promise<void> {
 	log(`${dim(`output`)} ${name} = ${bold(value)}`);
 	const file = process.env.GITHUB_OUTPUT;
 	if (!file) return;
-	await mkdir(dirname(file), { recursive: true });
-	await appendFile(file, `${name}=${value}\n`, "utf8");
+	mkdirSync(dirname(file), { recursive: true });
+	appendFileSync(`${file}`, `${name}=${value}\n`, "utf8");
 }
 
 /** Appends a section to the job summary shown on the run page. */
 export async function setSummary(markdown: string): Promise<void> {
 	const file = process.env.GITHUB_STEP_SUMMARY;
 	if (!file) return;
-	await mkdir(dirname(file), { recursive: true });
-	await appendFile(file, `${markdown}\n`, "utf8");
+	mkdirSync(dirname(file), { recursive: true });
+	appendFileSync(file, `${markdown}\n`, "utf8");
 }
 
 /** Group of lines printed as a GitHub Actions log group, or plain text locally. */

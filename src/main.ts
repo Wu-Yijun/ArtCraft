@@ -11,6 +11,8 @@ import { copyToDeploy } from "./07-copy-to-deploy.ts";
 import { writeEntryPages } from "./08-write-entry-pages.ts";
 import type { Apps } from "./type.ts";
 import { blue, bold, cyan, dim, fail, green, group, log, setOutput, setSummary, yellow } from "./utils/log.ts";
+import { loadEnv } from "./utils/env.ts";
+import { githubToken } from "./utils/net.ts";
 
 // ---------------------------------------------------------------------------
 // ArtCraft deploy pipeline.
@@ -43,6 +45,15 @@ function buildSummary(apps: Apps): string {
 async function main(): Promise<void> {
 	log(bold(blue("ArtCraft")) + dim(" · collect, cache and publish the Crafting Apps"));
 	log(dim(`root      ${root}`));
+
+	const envFile = loadEnv(root);
+	const token = githubToken();
+	log(
+		dim(`token     `) +
+			(token === undefined
+				? yellow("none, the GitHub API is limited to 60 requests per hour")
+				: `${green("loaded")} ${dim(token === process.env.GITHUB_TOKEN && envFile !== undefined ? "from .env" : "from the environment")}`),
+	);
 
 	const apps = await loadConfig(root);
 

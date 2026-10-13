@@ -10,6 +10,7 @@ import { ensureParent } from "./fs.ts";
 // ---------------------------------------------------------------------------
 
 const USER_AGENT = "ArtCraft-Deploy (+https://github.com/Wu-Yijun/ArtCraft)";
+const API_VERSION = "2026-03-10";
 const RETRIES = 3;
 const RETRY_DELAY_MS = 2_000;
 
@@ -35,9 +36,29 @@ function headersOf(extra?: Record<string, string>): Record<string, string> {
 		accept: "*/*",
 		...extra,
 	};
-	const token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
-	if (token) headers.authorization = `Bearer ${token}`;
+	const token = githubToken();
+	if (token !== undefined && headers.authorization === undefined) {
+		headers.authorization = `Bearer ${token}`;
+	}
 	return headers;
+}
+
+/** Headers required by the GitHub REST API. */
+export function githubHeaders(): Record<string, string> {
+	const headers: Record<string, string> = {
+		accept: "application/vnd.github+json",
+		"x-github-api-version": API_VERSION,
+		"user-agent": "Node-Fetch-Actions",
+	};
+	const token = githubToken();
+	if (token !== undefined) headers.authorization = `Bearer ${token}`;
+	return headers;
+}
+
+/** The token used for API and asset requests, if one is configured. */
+export function githubToken(): string | undefined {
+	const token = process.env.GITHUB_TOKEN ?? process.env.GH_TOKEN;
+	return token === undefined || token.trim() === "" ? undefined : token.trim();
 }
 
 /** Performs a request with a couple of retries on transient failures. */
@@ -61,7 +82,7 @@ async function request(url: string, init?: RequestInit): Promise<Response> {
 
 /** Downloads a URL and parses the response as JSON. */
 export async function fetchJson<T>(url: string): Promise<T> {
-	const response = await request(url, { headers: { accept: "application/vnd.github+json" } });
+	const response = await request(url, { headers: githubHeaders() });
 	return (await response.json()) as T;
 }
 
