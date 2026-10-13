@@ -11,8 +11,8 @@ import { ensureParent } from "./fs.ts";
 
 const USER_AGENT = "ArtCraft-Deploy (+https://github.com/Wu-Yijun/ArtCraft)";
 const API_VERSION = "2026-03-10";
-const RETRIES = 3;
-const RETRY_DELAY_MS = 2_000;
+const RETRIES = 5;
+const RETRY_DELAY_MS = 3_000;
 
 export class HttpError extends Error {
 	readonly status: number;

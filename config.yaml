@@ -71,26 +71,26 @@ apps:
       web(.*)zip
     index: index.html
 
-  - name: VectorCraft
-    title: Illustrator
-    folder: illustrator
-    aliases:
-      - vector
-      - ai
-      - draw
-    baseurl: /ArtCraft/illustrator/
-    github-repo: https://github.com/storytold/vectorcraft
-    home: https://getartcraft.com/apps/vectorcraft
-    icon: https://getartcraft.com/images/apps/vectorcraft/icon.webp
-    status: In development
-    description: Fast, open-source vector illustration, reimagined in pure Rust.
-    release-pattern: |
-      ^vectorcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^vectorcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: VectorCraft
+  #   title: Illustrator
+  #   folder: illustrator
+  #   aliases:
+  #     - vector
+  #     - ai
+  #     - draw
+  #   baseurl: /ArtCraft/illustrator/
+  #   github-repo: https://github.com/storytold/vectorcraft
+  #   home: https://getartcraft.com/apps/vectorcraft
+  #   icon: https://getartcraft.com/images/apps/vectorcraft/icon.webp
+  #   status: In development
+  #   description: Fast, open-source vector illustration, reimagined in pure Rust.
+  #   release-pattern: |
+  #     ^vectorcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^vectorcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
 
   - name: FilmCraft
     title: Premiere
@@ -113,150 +113,150 @@ apps:
       web(.*)zip
     index: index.html
 
-  - name: LightCraft
-    title: Lightroom
-    folder: lightroom
-    aliases:
-      - light
-      - raw
-    baseurl: /ArtCraft/lightroom/
-    github-repo: https://github.com/storytold/lightcraft
-    home: https://getartcraft.com/apps/lightcraft
-    icon: https://getartcraft.com/images/apps/lightcraft/icon.webp
-    status: In development
-    description: An open-source photo library and raw developer that runs on your machine.
-    release-pattern: |
-      ^lightcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^lightcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: LightCraft
+  #   title: Lightroom
+  #   folder: lightroom
+  #   aliases:
+  #     - light
+  #     - raw
+  #   baseurl: /ArtCraft/lightroom/
+  #   github-repo: https://github.com/storytold/lightcraft
+  #   home: https://getartcraft.com/apps/lightcraft
+  #   icon: https://getartcraft.com/images/apps/lightcraft/icon.webp
+  #   status: In development
+  #   description: An open-source photo library and raw developer that runs on your machine.
+  #   release-pattern: |
+  #     ^lightcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^lightcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
 
-  - name: PdfCraft
-    title: PDF
-    folder: pdf
-    aliases:
-      - reader
-      - docs
-    baseurl: /ArtCraft/pdf/
-    github-repo: https://github.com/storytold/pdfcraft
-    home: https://getartcraft.com/apps/pdfcraft
-    icon: https://getartcraft.com/images/apps/pdfcraft/icon.webp
-    status: Early alpha
-    description: "The open-source PDF workbench: read, organize, combine, split and secure."
-    release-pattern: |
-      ^pdfcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^pdfcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: PdfCraft
+  #   title: PDF
+  #   folder: pdf
+  #   aliases:
+  #     - reader
+  #     - docs
+  #   baseurl: /ArtCraft/pdf/
+  #   github-repo: https://github.com/storytold/pdfcraft
+  #   home: https://getartcraft.com/apps/pdfcraft
+  #   icon: https://getartcraft.com/images/apps/pdfcraft/icon.webp
+  #   status: Early alpha
+  #   description: "The open-source PDF workbench: read, organize, combine, split and secure."
+  #   release-pattern: |
+  #     ^pdfcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^pdfcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
 
-  - name: EffectCraft
-    title: After Effects
-    folder: aftereffects
-    aliases:
-      - effect
-      - ae
-      - motion
-      - vfx
-    baseurl: /ArtCraft/aftereffects/
-    github-repo: https://github.com/storytold/effectcraft
-    home: https://getartcraft.com/apps/effectcraft
-    icon: https://getartcraft.com/images/apps/effectcraft/icon.webp
-    status: In development
-    description: Open-source motion graphics and visual effects, built in pure Rust.
-    release-pattern: |
-      ^effectcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^effectcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: EffectCraft
+  #   title: After Effects
+  #   folder: aftereffects
+  #   aliases:
+  #     - effect
+  #     - ae
+  #     - motion
+  #     - vfx
+  #   baseurl: /ArtCraft/aftereffects/
+  #   github-repo: https://github.com/storytold/effectcraft
+  #   home: https://getartcraft.com/apps/effectcraft
+  #   icon: https://getartcraft.com/images/apps/effectcraft/icon.webp
+  #   status: In development
+  #   description: Open-source motion graphics and visual effects, built in pure Rust.
+  #   release-pattern: |
+  #     ^effectcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^effectcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
 
-  - name: DesignCraft
-    title: InDesign
-    folder: indesign
-    aliases:
-      - design
-      - layout
-      - id
-    baseurl: /ArtCraft/indesign/
-    github-repo: https://github.com/storytold/designcraft
-    home: https://getartcraft.com/apps/designcraft
-    icon: https://getartcraft.com/images/apps/designcraft/icon.webp
-    status: In development
-    description: Open-source page layout and publishing, rebuilt from scratch in Rust.
-    release-pattern: |
-      ^designcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^designcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: DesignCraft
+  #   title: InDesign
+  #   folder: indesign
+  #   aliases:
+  #     - design
+  #     - layout
+  #     - id
+  #   baseurl: /ArtCraft/indesign/
+  #   github-repo: https://github.com/storytold/designcraft
+  #   home: https://getartcraft.com/apps/designcraft
+  #   icon: https://getartcraft.com/images/apps/designcraft/icon.webp
+  #   status: In development
+  #   description: Open-source page layout and publishing, rebuilt from scratch in Rust.
+  #   release-pattern: |
+  #     ^designcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^designcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
 
-  - name: GridCraft
-    title: Excel
-    folder: excel
-    aliases:
-      - grid
-      - sheet
-      - table
-    baseurl: /ArtCraft/excel/
-    github-repo: https://github.com/storytold/gridcraft
-    home: https://getartcraft.com/apps/gridcraft
-    icon: https://getartcraft.com/images/apps/gridcraft/icon.webp
-    status: In development
-    description: Fast, open-source spreadsheets and data analysis, rebuilt in pure Rust.
-    release-pattern: |
-      ^gridcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^gridcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: GridCraft
+  #   title: Excel
+  #   folder: excel
+  #   aliases:
+  #     - grid
+  #     - sheet
+  #     - table
+  #   baseurl: /ArtCraft/excel/
+  #   github-repo: https://github.com/storytold/gridcraft
+  #   home: https://getartcraft.com/apps/gridcraft
+  #   icon: https://getartcraft.com/images/apps/gridcraft/icon.webp
+  #   status: In development
+  #   description: Fast, open-source spreadsheets and data analysis, rebuilt in pure Rust.
+  #   release-pattern: |
+  #     ^gridcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^gridcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
 
-  - name: CADCraft
-    title: AutoCAD
-    folder: autocad
-    aliases:
-      - cad
-      - dwg
-    baseurl: /ArtCraft/autocad/
-    github-repo: https://github.com/storytold/cadcraft
-    home: https://getartcraft.com/apps/cadcraft
-    icon: https://getartcraft.com/images/apps/cadcraft/icon.webp
-    status: In development
-    description: Fast, open-source computer-aided design and drafting in pure Rust.
-    release-pattern: |
-      ^cadcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^cadcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: CADCraft
+  #   title: AutoCAD
+  #   folder: autocad
+  #   aliases:
+  #     - cad
+  #     - dwg
+  #   baseurl: /ArtCraft/autocad/
+  #   github-repo: https://github.com/storytold/cadcraft
+  #   home: https://getartcraft.com/apps/cadcraft
+  #   icon: https://getartcraft.com/images/apps/cadcraft/icon.webp
+  #   status: In development
+  #   description: Fast, open-source computer-aided design and drafting in pure Rust.
+  #   release-pattern: |
+  #     ^cadcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^cadcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
 
-  - name: SoundCraft
-    title: Audition
-    folder: audition
-    aliases:
-      - sound
-      - audio
-      - music
-    baseurl: /ArtCraft/audition/
-    github-repo: https://github.com/storytold/soundcraft
-    home: https://getartcraft.com/apps/soundcraft
-    icon: https://getartcraft.com/images/apps/soundcraft/icon.webp
-    status: In development
-    description: Professional audio recording, editing and mixing in pure Rust.
-    release-pattern: |
-      ^soundcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^soundcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: SoundCraft
+  #   title: Audition
+  #   folder: audition
+  #   aliases:
+  #     - sound
+  #     - audio
+  #     - music
+  #   baseurl: /ArtCraft/audition/
+  #   github-repo: https://github.com/storytold/soundcraft
+  #   home: https://getartcraft.com/apps/soundcraft
+  #   icon: https://getartcraft.com/images/apps/soundcraft/icon.webp
+  #   status: In development
+  #   description: Professional audio recording, editing and mixing in pure Rust.
+  #   release-pattern: |
+  #     ^soundcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^soundcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
 
   - name: WordCraft
     title: Word
@@ -278,43 +278,43 @@ apps:
       web(.*)zip
     index: index.html
 
-  - name: DeckCraft
-    title: PowerPoint
-    folder: powerpoint
-    aliases:
-      - slide
-      - deck
-      - ppt
-    baseurl: /ArtCraft/powerpoint/
-    github-repo: https://github.com/storytold/deckcraft
-    home: https://getartcraft.com/apps/deckcraft
-    icon: https://getartcraft.com/images/apps/deckcraft/icon.webp
-    status: In development
-    description: Build and deliver dynamic slide presentations, in pure Rust.
-    release-pattern: |
-      ^deckcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^deckcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: DeckCraft
+  #   title: PowerPoint
+  #   folder: powerpoint
+  #   aliases:
+  #     - slide
+  #     - deck
+  #     - ppt
+  #   baseurl: /ArtCraft/powerpoint/
+  #   github-repo: https://github.com/storytold/deckcraft
+  #   home: https://getartcraft.com/apps/deckcraft
+  #   icon: https://getartcraft.com/images/apps/deckcraft/icon.webp
+  #   status: In development
+  #   description: Build and deliver dynamic slide presentations, in pure Rust.
+  #   release-pattern: |
+  #     ^deckcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^deckcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
 
-  - name: FigCraft
-    title: Figma
-    folder: figma
-    aliases:
-      - fig
-      - ui
-    baseurl: /ArtCraft/figma/
-    github-repo: https://github.com/storytold/figcraft
-    home: https://getartcraft.com/apps/figcraft
-    icon: https://getartcraft.com/images/apps/figcraft/icon.webp
-    status: Early alpha
-    description: Open-source interface design and prototyping, rebuilt in pure Rust.
-    release-pattern: |
-      ^figcraft-web-(\d+\.\d+\.\d+)\.zip$
-      ^figcraft-web-(.*)\.zip$
-      ^\w+-web-(.*)\.zip$
-      web\.(.*)\.zip
-      web(.*)zip
-    index: index.html
+  # - name: FigCraft
+  #   title: Figma
+  #   folder: figma
+  #   aliases:
+  #     - fig
+  #     - ui
+  #   baseurl: /ArtCraft/figma/
+  #   github-repo: https://github.com/storytold/figcraft
+  #   home: https://getartcraft.com/apps/figcraft
+  #   icon: https://getartcraft.com/images/apps/figcraft/icon.webp
+  #   status: Early alpha
+  #   description: Open-source interface design and prototyping, rebuilt in pure Rust.
+  #   release-pattern: |
+  #     ^figcraft-web-(\d+\.\d+\.\d+)\.zip$
+  #     ^figcraft-web-(.*)\.zip$
+  #     ^\w+-web-(.*)\.zip$
+  #     web\.(.*)\.zip
+  #     web(.*)zip
+  #   index: index.html
