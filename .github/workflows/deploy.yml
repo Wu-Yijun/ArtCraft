@@ -69,4 +69,4 @@ jobs:
         uses: Wu-Yijun/actions/.github/actions/deploy@main
         with:
           path: deploy/
-          expire: 5      # 5 seconds
+          expire: 30      # 30 seconds
