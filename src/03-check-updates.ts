@@ -1,4 +1,4 @@
-import type { Apps } from "./type.ts";
+import type { Apps, ItemInfo } from "./type.ts";
 import { readVersionCache } from "./utils/cache.ts";
 import { fromRoot, isFile } from "./utils/fs.ts";
 import { bold, cyan, dim, green, log, step, yellow } from "./utils/log.ts";
@@ -47,17 +47,17 @@ export async function checkUpdates(apps: Apps): Promise<void> {
 	apps.updated = outdated > 0 || !deployReady;
 
 	log("");
-	log(`  ${cyan(String(outdated))} of ${cyan(String(apps.list.length))} apps need a new download`);
+	log(`  ${cyan(`${outdated} of ${apps.list.length}`)} apps need a new download`);
 	log(`  cache    ${dim(apps.config.cache.folder)}`);
 	log(`  ${apps.updated ? bold(green("work to do")) : bold(green("nothing to do"))}`);
 }
 
 /** The apps that have to be downloaded, extracted and cached. */
-export function pendingApps(apps: Apps) {
+export function pendingApps(apps: Apps): ItemInfo[] {
 	return apps.list.filter((item) => item.need_to_update && item.artifact_url !== undefined);
 }
 
 /** The apps that could not be inspected and are therefore left untouched. */
-export function failedApps(apps: Apps) {
+export function failedApps(apps: Apps): ItemInfo[] {
 	return apps.list.filter((item) => item.artifact_name === undefined);
 }
