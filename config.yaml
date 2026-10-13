@@ -1,0 +1,35 @@
+website:
+  title: ArtCraft
+  description: A collection of web apps for art and craft enthusiasts.
+  url: https://Wu-Yijun.github.io/ArtCraft/
+  baseurl: /ArtCraft/
+
+schedule:
+  - cron: '56 4 * * *'
+
+deploy:
+  folder: deploy
+  index: deploy/index.html
+
+apps:
+  - name: Word
+    baseurl: /ArtCraft/word/
+    github-repo: https://github.com/storytold/wordcraft 
+    release-pattern: |
+      ^wordcraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^wordcraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+  
+  - name: Slide
+    baseurl: /ArtCraft/slide/
+    github-repo: https://github.com/storytold/deckcraft
+    release-pattern: |
+      ^deckcraft-web-\d+\.\d+\.\d+\.zip$
+      ^deckcraft-web-.*\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
