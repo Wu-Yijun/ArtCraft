@@ -91,6 +91,11 @@ async function main(): Promise<void> {
         }`),
   );
 
+  const forceDeploy = process.env.FORCE_DEPLOY === "1";
+  if (forceDeploy) {
+    log(dim(`force    deploy on demand`));
+  }
+
   const apps = await loadConfig(root);
 
   try {
@@ -100,7 +105,7 @@ async function main(): Promise<void> {
     fail("could not determine the available versions", error);
   }
 
-  if (!apps.updated) {
+  if (!apps.updated && !forceDeploy) {
     log("");
     log(
       green("up to date") +

@@ -8,6 +8,12 @@ on:
     - cron: '23 22 * * *'
     - cron: '23 10 * * *'
   workflow_dispatch:
+    inputs:
+      force_deploy:
+        description: 'Force redeploy even when no app was updated'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   check-and-deploy:
@@ -53,6 +59,7 @@ jobs:
         run: node src/main.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FORCE_DEPLOY: ${{ github.event.inputs.force_deploy && '1' || '0' }}
 
       #### Cache ArtCraft Apps ####
       - name: Cache ArtCraft Apps
