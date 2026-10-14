@@ -22,12 +22,12 @@ export interface ConfigDeployInfo {
   folder: string;
   index: string;
   "app-list": string;
+  "hash-file": string;
   "hashed-files": string[];
 }
 
 /** The `cache` block of config.yaml. */
 export interface ConfigCacheInfo {
-  root: string;
   folder: string;
   versions: string;
 }

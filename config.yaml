@@ -49,13 +49,13 @@ deploy:
   folder: deploy
   index: deploy/index.html
   app-list: deploy/apps.json
+  hash-file: artcraft-apps/deploy-hash.json
   hashed-files: |
     config.yaml
     deploy/index.html
     .github/workflows/deploy.yml
 
 cache:
-  root: artcraft-apps
   folder: artcraft-apps/dist
   versions: artcraft-apps/dist/versions.yaml
 

@@ -139,10 +139,10 @@ export async function loadConfig(root: string): Promise<Apps> {
         folder: config.deploy?.folder ?? "deploy",
         index: config.deploy?.index ?? "deploy/index.html",
         "app-list": config.deploy?.["app-list"] ?? "deploy/apps.json",
+        "hash-file": config.deploy?.["hash-file"] ?? "artcraft-apps/deploy-hash.json",
         "hashed-files": parseHashedFiles(config.deploy?.["hashed-files"]),
       },
       cache: {
-        root: config.cache?.root ?? "artcraft-apps",
         folder: config.cache?.folder ?? "artcraft-apps/dist",
         versions: config.cache?.versions ?? "artcraft-apps/dist/versions.yaml",
       },
@@ -163,7 +163,7 @@ export async function loadConfig(root: string): Promise<Apps> {
     `  website  ${state.config.website.title} ${state.config.website.baseurl}`,
   );
   log(`  apps     ${items.length} configured`);
-  log(`  cache    ${state.config.cache.folder}`);
+  log(`  cache    ${state.config.deploy["hash-file"]}`);
   log(`  deploy   ${state.config.deploy.folder}`);
   return state;
 }

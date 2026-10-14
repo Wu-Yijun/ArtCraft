@@ -12,10 +12,10 @@ export async function saveDeployHash(apps: Apps): Promise<void> {
   step(10, 10, "Save the deploy hash");
 
   const hash = await computeDeployHash(apps);
-  const path = fromRoot(apps.root, apps.config.cache.folder, "deploy-hash.json");
+  const path = fromRoot(apps.root, apps.config.deploy["hash-file"]);
   await writeText(path, `${JSON.stringify(hash, undefined, 2)}\n`);
 
-  log(`  ${green("saved")} ${dim(apps.config.cache.folder + "/deploy-hash.json")}`);
+  log(`  ${green("saved")} ${dim(apps.config.deploy["hash-file"])}`);
   log("");
   log(`  ${green("done")} 10/10 steps finished`);
 }

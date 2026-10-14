@@ -76,17 +76,17 @@ jobs:
           key: artcraft-apps-${{ github.run_id }}
 
       #### Deploy to GitHub Pages ####
-      - name: Update Deploy Hash
-        if: steps.updates.outputs.deployUpdated == 'true'
-        uses: actions/cache/save@v6
-        with:
-          path: artcraft-apps/deploy-hash.json
-          key: deploy-hash-${{ github.run_id }}.json
-          
       - name: Deploy to GitHub Pages
         if: steps.updates.outputs.deployUpdated == 'true'
         id: deployment
         uses: Wu-Yijun/actions/.github/actions/deploy@main
         with:
           path: deploy/
-          expire: 30      # 30 seconds
+          expire: 30      # 30 seconds for max waiting before delete
+      
+      - name: Update Deploy Hash
+        if: steps.updates.outputs.deployUpdated == 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: artcraft-apps/deploy-hash.json
+          key: deploy-hash-${{ github.run_id }}.json

@@ -48,8 +48,7 @@ export async function checkUpdates(apps: Apps): Promise<void> {
 
   const hashFile = fromRoot(
     apps.root,
-    apps.config.cache.root,
-    "deploy-hash.json",
+    apps.config.deploy["hash-file"]
   );
   const previousHash = await readDeployHash(hashFile);
   const currentHash = await computeDeployHash(apps);
@@ -58,8 +57,10 @@ export async function checkUpdates(apps: Apps): Promise<void> {
 
   if (hashDiff.changed) {
     log(
-      `  ${yellow("hash  ")} config changed: ${dim(hashDiff.details.join(", "))}`,
+      `  ${yellow("hash  ")} changed, deploy needed: ${dim(hashDiff.details.join(", "))}`,
     );
+  } else {
+    log(`  ${green("hash  ")} unchanged`);
   }
 
   for (const item of failedApps(apps)) {
