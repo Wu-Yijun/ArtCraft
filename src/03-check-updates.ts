@@ -77,6 +77,7 @@ export async function checkUpdates(apps: Apps): Promise<void> {
   }
 
   apps.updated = outdated > 0 || state.rebuild;
+  apps.deployRebuild = state.rebuild;
 
   log("");
   log(

@@ -5,8 +5,8 @@ on:
     branches:
       - main
   schedule:
-    - cron: '12 3 * * *'
-    - cron: '43 21 * * *'
+    - cron: '23 22 * * *'
+    - cron: '23 10 * * *'
   workflow_dispatch:
 
 jobs:
@@ -56,7 +56,7 @@ jobs:
 
       #### Cache ArtCraft Apps ####
       - name: Cache ArtCraft Apps
-        if: steps.updates.outputs.hasUpdates == 'true'
+        if: steps.updates.outputs.cacheUpdated == 'true'
         uses: actions/cache/save@v6
         with:
           path: artcraft-apps/dist
@@ -64,7 +64,7 @@ jobs:
 
       #### Deploy to GitHub Pages ####
       - name: Deploy to GitHub Pages
-        if: steps.updates.outputs.hasUpdates == 'true'
+        if: steps.updates.outputs.deployUpdated == 'true'
         id: deployment
         uses: Wu-Yijun/actions/.github/actions/deploy@main
         with:

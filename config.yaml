@@ -42,7 +42,8 @@ website:
 
 # Used by .github/workflows/deploy.yml to keep the cron in sync with config.yaml.
 schedule:
-  - cron: '56 4 * * *'
+  - cron: '23 22 * * *'
+  - cron: '23 10 * * *'
 
 deploy:
   folder: deploy

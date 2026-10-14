@@ -152,6 +152,7 @@ export async function loadConfig(root: string): Promise<Apps> {
     root,
     list: items,
     updated: false,
+    deployRebuild: false,
   };
 
   step(1, STEP_TOTAL, "Load configuration");

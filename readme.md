@@ -139,7 +139,10 @@ node src/main.ts > logs/run.log 2>&1
 ```
 
 The pipeline exits with `0` and publishes nothing when every app is already up to date, and it sets
-the `hasUpdates`, `updatedApps` and `totalApps` step outputs for the workflow.
+the `cacheUpdated`, `deployUpdated`, `updatedApps` and `totalApps` step outputs for the workflow.
+`cacheUpdated` is `true` when at least one app was newly downloaded and cached; `deployUpdated` is `true`
+when the deploy folder changed (new apps, removed apps, config changes, or new content). The workflow
+uses `cacheUpdated` to decide whether to save the cache and `deployUpdated` to decide whether to publish.
 
 ### Formatting
 

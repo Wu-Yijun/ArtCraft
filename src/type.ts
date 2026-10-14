@@ -127,6 +127,7 @@ export interface Apps {
   root: string;
   list: ItemInfo[];
   updated: boolean;
+  deployRebuild: boolean;
 }
 
 /** One record of deploy/apps.json, consumed by deploy/index.html. */

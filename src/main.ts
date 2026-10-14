@@ -107,7 +107,8 @@ async function main(): Promise<void> {
         dim(` — nothing to do, ${apps.list.length} apps already cached`),
     );
     await setOutput("totalApps", String(apps.list.length));
-    await setOutput("hasUpdates", "false");
+    await setOutput("cacheUpdated", "false");
+    await setOutput("deployUpdated", "false");
     await setOutput("updatedApps", "0");
     return;
   }
@@ -159,8 +160,20 @@ async function main(): Promise<void> {
     );
   }
 
+  const cacheUpdated = updated.length > 0;
+  const deployUpdated = apps.deployRebuild || cacheUpdated;
+
+  if (!cacheUpdated && !deployUpdated) {
+    log("");
+    log(
+      yellow("no changes") +
+        dim(" — every update failed or was already deployed"),
+    );
+  }
+
   await group("job summary", () => setSummary(buildSummary(apps)));
-  await setOutput("hasUpdates", "true");
+  await setOutput("cacheUpdated", String(cacheUpdated));
+  await setOutput("deployUpdated", String(deployUpdated));
   await setOutput("updatedApps", String(updated.length));
   await setOutput("failedApps", String(failed.length + unavailable.length));
   await setOutput("totalApps", String(apps.list.length));
