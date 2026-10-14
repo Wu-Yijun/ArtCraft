@@ -2,7 +2,7 @@
   <img alt="ArtCraft" src="https://getartcraft.com/artcraft-icon.svg" width="88">
 </p>
 
-<h1 align="center">ArtCraft</h1>
+<h1 align="center">ArtCraft · Online</h1>
 
 <p align="center">
   <b>The Crafting Apps, running in your browser.</b>
