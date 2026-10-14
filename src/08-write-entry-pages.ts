@@ -64,7 +64,7 @@ async function writeAliases(apps: Apps): Promise<string[]> {
 
 /** Publishes the entry page data and every alias redirect page. */
 export async function writeEntryPages(apps: Apps): Promise<void> {
-  step(8, 9, "Write the entry page data");
+  step(8, 10, "Write the entry page data");
 
   const entries = buildEntries(apps);
   if (entries.length === 0) {

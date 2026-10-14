@@ -10,6 +10,7 @@ import { updateCache } from "./06-update-cache.ts";
 import { copyToDeploy } from "./07-copy-to-deploy.ts";
 import { writeEntryPages } from "./08-write-entry-pages.ts";
 import { publishIcons } from "./09-app-icons.ts";
+import { saveDeployHash } from "./10-save-hash.ts";
 import type { Apps } from "./type.ts";
 import {
   blue,
@@ -135,6 +136,7 @@ async function main(): Promise<void> {
     await copyToDeploy(apps);
     await writeEntryPages(apps);
     await publishIcons(apps);
+    await saveDeployHash(apps);
   } catch (error) {
     fail("deploy failed", error);
   }

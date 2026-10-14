@@ -1,6 +1,7 @@
 import { parse, stringify } from "yaml";
 
 import { exists, readText, writeText } from "./fs.ts";
+import type { DeployHash } from "./hash.ts";
 
 // ---------------------------------------------------------------------------
 // The on-disk cache of already downloaded app bundles.
@@ -51,7 +52,9 @@ export async function readVersionCache(path: string): Promise<VersionCache> {
         published_at: typeof entry.published_at === "string"
           ? entry.published_at
           : "",
-        cached_at: typeof entry.cached_at === "string" ? entry.cached_at : "",
+        cached_at: typeof entry.cached_at === "string"
+          ? entry.cached_at
+          : "",
       };
     }
     return {
@@ -77,4 +80,22 @@ export async function writeVersionCache(
       stringify(cache, { lineWidth: 0 })
     }`,
   );
+}
+
+/** Reads the deploy hash JSON; a missing file yields an empty hash. */
+export async function readDeployHash(path: string): Promise<DeployHash> {
+  if (!(await exists(path))) return {};
+  try {
+    const parsed = JSON.parse(await readText(path)) as unknown;
+    if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
+      return {};
+    }
+    const hash: DeployHash = {};
+    for (const [key, value] of Object.entries(parsed)) {
+      if (typeof value === "string") hash[key] = value;
+    }
+    return hash;
+  } catch {
+    return {};
+  }
 }

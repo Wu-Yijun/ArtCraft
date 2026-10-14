@@ -1,8 +1,7 @@
-import { readdir } from "node:fs/promises";
-
 import type { Apps, ItemInfo } from "./type.ts";
-import { readVersionCache } from "./utils/cache.ts";
-import { fromRoot, isDirectory, isFile } from "./utils/fs.ts";
+import { readVersionCache, readDeployHash } from "./utils/cache.ts";
+import { computeDeployHash, diffDeployHash } from "./utils/hash.ts";
+import { fromRoot, isFile } from "./utils/fs.ts";
 import { bold, cyan, dim, green, log, step, yellow } from "./utils/log.ts";
 
 // ---------------------------------------------------------------------------
@@ -12,7 +11,7 @@ import { bold, cyan, dim, green, log, step, yellow } from "./utils/log.ts";
 
 /** Fills in `need_to_update` for every app and sets `apps.updated`. */
 export async function checkUpdates(apps: Apps): Promise<void> {
-  step(3, 9, "Compare with the local cache");
+  step(3, 10, "Compare with the local cache");
 
   const versionsFile = fromRoot(apps.root, apps.config.cache.versions);
   const cache = await readVersionCache(versionsFile);
@@ -47,26 +46,22 @@ export async function checkUpdates(apps: Apps): Promise<void> {
     );
   }
 
-  const deployIndex = fromRoot(apps.root, apps.config.deploy.index);
-  const state = await inspectDeploy(apps, deployIndex);
-  if (state.missing.length > 0) {
+  const hashFile = fromRoot(
+    apps.root,
+    apps.config.cache.root,
+    "deploy-hash.json",
+  );
+  const previousHash = await readDeployHash(hashFile);
+  const currentHash = await computeDeployHash(apps);
+  const hashDiff = diffDeployHash(previousHash, currentHash);
+  apps.deployRebuild = hashDiff.changed;
+
+  if (hashDiff.changed) {
     log(
-      `  ${
-        yellow("build")
-      }  cache misses ${state.missing.length} path(s): ${
-        dim(state.missing.join(" "))
-      }`,
+      `  ${yellow("hash  ")} config changed: ${dim(hashDiff.details.join(", "))}`,
     );
   }
-  if (state.stale.length > 0) {
-    log(
-      `  ${
-        yellow("clean")
-      }  cache has ${state.stale.length} unused path(s): ${
-        dim(state.stale.join(" "))
-      }`,
-    );
-  }
+
   for (const item of failedApps(apps)) {
     log(
       `  ${yellow("warn ")} ${item.name.padEnd(14)} ${
@@ -75,8 +70,7 @@ export async function checkUpdates(apps: Apps): Promise<void> {
     );
   }
 
-  apps.updated = outdated > 0 || state.rebuild;
-  apps.deployRebuild = state.rebuild;
+  apps.updated = outdated > 0 || hashDiff.changed;
 
   log("");
   log(
@@ -88,44 +82,6 @@ export async function checkUpdates(apps: Apps): Promise<void> {
       apps.updated ? bold(green("work to do")) : bold(green("nothing to do"))
     }`,
   );
-}
-
-/** The paths the deploy folder has to contain: one folder per app and alias. */
-function expectedPaths(apps: Apps): Set<string> {
-  const names = new Set<string>();
-  for (const item of apps.list) {
-    names.add(item.folder);
-    for (const alias of item.aliases) names.add(alias);
-  }
-  return names;
-}
-
-/**
- * Looks at what is already cached. New apps, renamed folders and freshly
- * added aliases are picked up here, even when no app was released in between,
- * so a config change alone still triggers a rebuild.
- */
-async function inspectDeploy(
-  apps: Apps,
-  deployIndex: string,
-): Promise<{ rebuild: boolean; missing: string[]; stale: string[] }> {
-  const folder = fromRoot(apps.root, apps.config.cache.folder);
-  const expected = expectedPaths(apps);
-
-  let present = new Set<string>();
-  if (await isDirectory(folder)) {
-    const entries = await readdir(folder, { withFileTypes: true });
-    present = new Set(
-      entries.filter((entry) => entry.isDirectory()).map((entry) => entry.name),
-    );
-  }
-
-  const missing = [...expected].filter((name) => !present.has(name));
-  const stale = [...present].filter((name) => !expected.has(name));
-  const rebuild = missing.length > 0 || stale.length > 0 ||
-    !(await isFile(deployIndex));
-
-  return { rebuild, missing, stale };
 }
 
 /** The apps that have to be downloaded, extracted and cached. */

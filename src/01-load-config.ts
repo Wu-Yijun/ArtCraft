@@ -139,8 +139,10 @@ export async function loadConfig(root: string): Promise<Apps> {
         folder: config.deploy?.folder ?? "deploy",
         index: config.deploy?.index ?? "deploy/index.html",
         "app-list": config.deploy?.["app-list"] ?? "deploy/apps.json",
+        "hashed-files": parseHashedFiles(config.deploy?.["hashed-files"]),
       },
       cache: {
+        root: config.cache?.root ?? "artcraft-apps",
         folder: config.cache?.folder ?? "artcraft-apps/dist",
         versions: config.cache?.versions ?? "artcraft-apps/dist/versions.yaml",
       },
@@ -167,4 +169,13 @@ export async function loadConfig(root: string): Promise<Apps> {
 }
 
 /** Total number of steps, used for the step banners. */
-export const STEP_TOTAL = 9;
+export const STEP_TOTAL = 10;
+
+/** Parses the multi-line `hashed-files` block into a list of file paths. */
+function parseHashedFiles(block: unknown): string[] {
+  if (typeof block !== "string") return [];
+  return block
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter((line) => line !== "" && !line.startsWith("#"));
+}

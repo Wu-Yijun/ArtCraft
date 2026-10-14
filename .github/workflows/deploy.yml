@@ -12,7 +12,6 @@ on:
       force_deploy:
         description: 'Force redeploy even when no app was updated'
         required: false
-        default: 'false'
         type: boolean
 
 jobs:
@@ -53,6 +52,13 @@ jobs:
           key: artcraft-apps-${{ github.run_id }}
           restore-keys: artcraft-apps-
 
+      - name: Load cached Deploy Hash
+        uses: actions/cache/restore@v6
+        with:
+          path: artcraft-apps/deploy-hash.json
+          key: deploy-hash-${{ github.run_id }}.json
+          restore-keys: deploy-hash-
+
       #### Check for Updates, Download Missing files, Update cache files, and Copy to Deploy folder if needed ####
       - name: Run scripts
         id: updates
@@ -70,6 +76,13 @@ jobs:
           key: artcraft-apps-${{ github.run_id }}
 
       #### Deploy to GitHub Pages ####
+      - name: Update Deploy Hash
+        if: steps.updates.outputs.deployUpdated == 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: artcraft-apps/deploy-hash.json
+          key: deploy-hash-${{ github.run_id }}.json
+          
       - name: Deploy to GitHub Pages
         if: steps.updates.outputs.deployUpdated == 'true'
         id: deployment

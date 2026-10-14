@@ -175,7 +175,7 @@ async function injectAppIcon(
  * the links anyway.
  */
 export async function publishIcons(apps: Apps): Promise<void> {
-  step(9, 9, "Publish the software icons");
+  step(9, 10, "Publish the software icons");
 
   const icons = new Map<string, string>();
   for (const item of apps.list) {
