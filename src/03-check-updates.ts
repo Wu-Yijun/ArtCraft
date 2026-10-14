@@ -53,7 +53,7 @@ export async function checkUpdates(apps: Apps): Promise<void> {
     log(
       `  ${
         yellow("build")
-      }  deploy folder misses ${state.missing.length} path(s): ${
+      }  cache misses ${state.missing.length} path(s): ${
         dim(state.missing.join(" "))
       }`,
     );
@@ -62,7 +62,7 @@ export async function checkUpdates(apps: Apps): Promise<void> {
     log(
       `  ${
         yellow("clean")
-      }  deploy folder has ${state.stale.length} unused path(s): ${
+      }  cache has ${state.stale.length} unused path(s): ${
         dim(state.stale.join(" "))
       }`,
     );
@@ -101,7 +101,7 @@ function expectedPaths(apps: Apps): Set<string> {
 }
 
 /**
- * Looks at what is already published. New apps, renamed folders and freshly
+ * Looks at what is already cached. New apps, renamed folders and freshly
  * added aliases are picked up here, even when no app was released in between,
  * so a config change alone still triggers a rebuild.
  */
@@ -109,7 +109,7 @@ async function inspectDeploy(
   apps: Apps,
   deployIndex: string,
 ): Promise<{ rebuild: boolean; missing: string[]; stale: string[] }> {
-  const folder = fromRoot(apps.root, apps.config.deploy.folder);
+  const folder = fromRoot(apps.root, apps.config.cache.folder);
   const expected = expectedPaths(apps);
 
   let present = new Set<string>();
