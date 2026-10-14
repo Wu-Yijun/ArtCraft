@@ -48,8 +48,7 @@ export async function checkUpdates(apps: Apps): Promise<void> {
   }
 
   const deployIndex = fromRoot(apps.root, apps.config.deploy.index);
-  const appList = fromRoot(apps.root, apps.config.deploy["app-list"]);
-  const state = await inspectDeploy(apps, deployIndex, appList);
+  const state = await inspectDeploy(apps, deployIndex);
   if (state.missing.length > 0) {
     log(
       `  ${
@@ -109,7 +108,6 @@ function expectedPaths(apps: Apps): Set<string> {
 async function inspectDeploy(
   apps: Apps,
   deployIndex: string,
-  appList: string,
 ): Promise<{ rebuild: boolean; missing: string[]; stale: string[] }> {
   const folder = fromRoot(apps.root, apps.config.deploy.folder);
   const expected = expectedPaths(apps);
@@ -125,7 +123,7 @@ async function inspectDeploy(
   const missing = [...expected].filter((name) => !present.has(name));
   const stale = [...present].filter((name) => !expected.has(name));
   const rebuild = missing.length > 0 || stale.length > 0 ||
-    !(await isFile(deployIndex)) || !(await isFile(appList));
+    !(await isFile(deployIndex));
 
   return { rebuild, missing, stale };
 }
