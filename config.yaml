@@ -255,21 +255,24 @@ apps:
     index: index.html
 
   - name: SoundCraft
-    title: Audition
-    folder: audition
-    software-icon: static/icons/audition.svg
+    title: Avid Pro Tools
+    folder: protools
+    software-icon: static/icons/protools.svg
     aliases:
       - sound
+      - pt
+      - audition
       - au
+      - avid
       - audio
       - music
-      - daw
-    baseurl: /ArtCraft/audition/
+      - scraft
+    baseurl: /ArtCraft/protools/
     github-repo: https://github.com/storytold/soundcraft
     home: https://getartcraft.com/apps/soundcraft
     icon: https://getartcraft.com/images/apps/soundcraft/icon.webp
     status: In development
-    description: A free Audition alternative online for recording, editing and mixing audio in your browser.
+    description: A free Avid Pro Tools alternative online for recording, editing and mixing audio in your browser.
     release-pattern: |
       ^soundcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^soundcraft-web-(.*)\.zip$

@@ -16,6 +16,7 @@ being downloaded by the pipeline — so a build never depends on an image host.
 | `excel.svg` | Microsoft Excel | [Microsoft_Office_Excel_(2025–present).svg](https://commons.wikimedia.org/wiki/File:Microsoft_Office_Excel_(2025–present).svg) |
 | `autocad.svg` | Autodesk AutoCAD | [Autodesk_AutoCAD_Logo.svg](https://commons.wikimedia.org/wiki/File:Autodesk_AutoCAD_Logo.svg) |
 | `audition.svg` | Adobe Audition | [Adobe_Audition_CC_2026_icon.svg](https://commons.wikimedia.org/wiki/File:Adobe_Audition_CC_2026_icon.svg) |
+| `protools.svg` | Avid Pro Tools | [PT2019.svg](https://commons.wikimedia.org/wiki/File:PT2019.svg) |
 | `word.svg` | Microsoft Word | [Microsoft_Office_Word_(2025–present).svg](https://commons.wikimedia.org/wiki/File:Microsoft_Office_Word_(2025–present).svg) |
 | `powerpoint.svg` | Microsoft PowerPoint | [Microsoft_Office_PowerPoint_(2025–present).svg](https://commons.wikimedia.org/wiki/File:Microsoft_Office_PowerPoint_(2025–present).svg) |
 | `figma.svg` | Figma | [Figma-logo.svg](https://commons.wikimedia.org/wiki/File:Figma-logo.svg) |

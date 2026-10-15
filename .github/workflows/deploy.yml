@@ -11,6 +11,10 @@ on:
       timezone: 'Asia/Shanghai'
   workflow_dispatch:
     inputs:
+      no_cache:
+        description: 'Force redownload all apps and ignore cache'
+        required: false
+        type: boolean
       force_deploy:
         description: 'Force redeploy even when no app was updated'
         required: false
@@ -48,6 +52,7 @@ jobs:
         run: pnpm ci
 
       - name: Load cached ArtCraft Apps
+        if: ${{ !github.event.inputs.no_cache }}
         uses: actions/cache/restore@v6
         with:
           path: artcraft-apps/dist
@@ -55,6 +60,7 @@ jobs:
           restore-keys: artcraft-apps-
 
       - name: Load cached Deploy Hash
+        if: ${{ !github.event.inputs.no_cache }}
         uses: actions/cache/restore@v6
         with:
           path: artcraft-apps/deploy-hash.json

@@ -25,7 +25,7 @@ PDFs, page layout, UI prototyping, spreadsheets, CAD drafting, documents or pres
 | **FigCraft** | Figma-style UI design and prototyping | [FigCraft](https://Wu-Yijun.github.io/ArtCraft/figma/) |
 | **GridCraft** | Excel-style spreadsheets and data analysis | [GridCraft](https://Wu-Yijun.github.io/ArtCraft/excel/) |
 | **CADCraft** | AutoCAD-style drafting and CAD | [CADCraft](https://Wu-Yijun.github.io/ArtCraft/autocad/) |
-| **SoundCraft** | Audition-style audio recording and mixing | [SoundCraft](https://Wu-Yijun.github.io/ArtCraft/audition/) |
+| **SoundCraft** | Avid Pro Tools-style audio recording, editing and mixing | [SoundCraft](https://Wu-Yijun.github.io/ArtCraft/protools/) |
 | **WordCraft** | Word-style document editing | [WordCraft](https://Wu-Yijun.github.io/ArtCraft/word/) |
 | **DeckCraft** | PowerPoint-style presentations | [DeckCraft](https://Wu-Yijun.github.io/ArtCraft/powerpoint/) |
 
