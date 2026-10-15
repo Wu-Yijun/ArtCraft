@@ -30,7 +30,7 @@
 
 website:
   title: ArtCraft
-  tagline: The Crafting Apps, in your browser
+  tagline: Free Photoshop alternatives and creative apps online
   description: >-
     WordCraft, DeckCraft, GridCraft, PhotoCraft, VectorCraft, FilmCraft,
     LightCraft, PdfCraft, EffectCraft, DesignCraft, FigCraft, CADCraft and
@@ -78,7 +78,7 @@ apps:
     home: https://getartcraft.com/apps/photocraft
     icon: https://getartcraft.com/images/apps/photocraft/icon.webp
     status: Early alpha
-    description: The open-source image editor you already know how to use.
+    description: A free Photoshop alternative online for editing images, photos and graphics in your browser.
     release-pattern: |
       ^photocraft-web-(\d+\.\d+\.\d+)\.zip$
       ^photocraft-web-(.*)\.zip$
@@ -101,7 +101,7 @@ apps:
     home: https://getartcraft.com/apps/lightcraft
     icon: https://getartcraft.com/images/apps/lightcraft/icon.webp
     status: In development
-    description: An open-source photo library and raw developer that runs on your machine.
+    description: A free Lightroom alternative online for organizing photos and developing RAW images in your browser.
     release-pattern: |
       ^lightcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^lightcraft-web-(.*)\.zip$
@@ -124,7 +124,7 @@ apps:
     home: https://getartcraft.com/apps/pdfcraft
     icon: https://getartcraft.com/images/apps/pdfcraft/icon.webp
     status: Early alpha
-    description: "The open-source PDF workbench: read, organize, combine, split and secure."
+    description: A free online PDF editor and Acrobat alternative to read, organize, combine, split and secure PDFs.
     release-pattern: |
       ^pdfcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^pdfcraft-web-(.*)\.zip$
@@ -148,7 +148,7 @@ apps:
     home: https://getartcraft.com/apps/wordcraft
     icon: https://getartcraft.com/images/apps/wordcraft/icon.webp
     status: In development
-    description: Fast, open-source word processing, rebuilt from scratch in pure Rust.
+    description: A free Word alternative online for writing and editing documents in your browser.
     release-pattern: |
       ^wordcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^wordcraft-web-(.*)\.zip$
@@ -173,7 +173,7 @@ apps:
     home: https://getartcraft.com/apps/deckcraft
     icon: https://getartcraft.com/images/apps/deckcraft/icon.webp
     status: In development
-    description: Build and deliver dynamic slide presentations, in pure Rust.
+    description: A free PowerPoint alternative online for creating and presenting slide decks in your browser.
     release-pattern: |
       ^deckcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^deckcraft-web-(.*)\.zip$
@@ -198,7 +198,7 @@ apps:
     home: https://getartcraft.com/apps/gridcraft
     icon: https://getartcraft.com/images/apps/gridcraft/icon.webp
     status: In development
-    description: Fast, open-source spreadsheets and data analysis, rebuilt in pure Rust.
+    description: A free Excel alternative online for spreadsheets, tables and data analysis in your browser.
     release-pattern: |
       ^gridcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^gridcraft-web-(.*)\.zip$
@@ -221,7 +221,7 @@ apps:
     home: https://getartcraft.com/apps/filmcraft
     icon: https://getartcraft.com/images/apps/filmcraft/icon.webp
     status: In development
-    description: Professional, open-source video editing, rebuilt from scratch in Rust.
+    description: A free Premiere Pro alternative online for editing video directly in your browser.
     release-pattern: |
       ^filmcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^filmcraft-web-(.*)\.zip$
@@ -245,7 +245,7 @@ apps:
     home: https://getartcraft.com/apps/effectcraft
     icon: https://getartcraft.com/images/apps/effectcraft/icon.webp
     status: In development
-    description: Open-source motion graphics and visual effects, built in pure Rust.
+    description: A free After Effects alternative online for motion graphics, compositing and visual effects.
     release-pattern: |
       ^effectcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^effectcraft-web-(.*)\.zip$
@@ -269,7 +269,7 @@ apps:
     home: https://getartcraft.com/apps/soundcraft
     icon: https://getartcraft.com/images/apps/soundcraft/icon.webp
     status: In development
-    description: Professional audio recording, editing and mixing in pure Rust.
+    description: A free Audition alternative online for recording, editing and mixing audio in your browser.
     release-pattern: |
       ^soundcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^soundcraft-web-(.*)\.zip$
@@ -292,7 +292,7 @@ apps:
     home: https://getartcraft.com/apps/vectorcraft
     icon: https://getartcraft.com/images/apps/vectorcraft/icon.webp
     status: In development
-    description: Fast, open-source vector illustration, reimagined in pure Rust.
+    description: A free Illustrator alternative online for vector drawing, SVG design and illustration.
     release-pattern: |
       ^vectorcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^vectorcraft-web-(.*)\.zip$
@@ -315,7 +315,7 @@ apps:
     home: https://getartcraft.com/apps/designcraft
     icon: https://getartcraft.com/images/apps/designcraft/icon.webp
     status: In development
-    description: Open-source page layout and publishing, rebuilt from scratch in Rust.
+    description: A free InDesign alternative online for page layout, typography and publishing.
     release-pattern: |
       ^designcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^designcraft-web-(.*)\.zip$
@@ -339,7 +339,7 @@ apps:
     home: https://getartcraft.com/apps/figcraft
     icon: https://getartcraft.com/images/apps/figcraft/icon.webp
     status: Early alpha
-    description: Open-source interface design and prototyping, rebuilt in pure Rust.
+    description: A free Figma alternative online for UI design, UX wireframes and prototyping.
     release-pattern: |
       ^figcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^figcraft-web-(.*)\.zip$
@@ -362,7 +362,7 @@ apps:
     home: https://getartcraft.com/apps/cadcraft
     icon: https://getartcraft.com/images/apps/cadcraft/icon.webp
     status: In development
-    description: Fast, open-source computer-aided design and drafting in pure Rust.
+    description: A free AutoCAD alternative online for CAD drafting and computer-aided design.
     release-pattern: |
       ^cadcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^cadcraft-web-(.*)\.zip$

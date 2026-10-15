@@ -26,6 +26,15 @@ const ICON_FOLDER = "icons";
 /** Markers of the generated block in the head of deploy/index.html. */
 const MARK_START = "<!-- icons:start -->";
 const MARK_END = "<!-- icons:end -->";
+const META_START = "<!-- artcraft:meta:start -->";
+const META_END = "<!-- artcraft:meta:end -->";
+
+function escapeAttribute(text: string): string {
+  return text.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(
+    /</g,
+    "&lt;",
+  ).replace(/>/g, "&gt;");
+}
 
 /** Copies the icon of one app into deploy/icons and returns its public path. */
 async function publishIcon(
@@ -102,7 +111,23 @@ const ICON_LINK = /<link\b[^>]*\brel=["']?icon["']?[^>]*>/gi;
 function clean(html: string): string {
   const block = new RegExp(`${MARK_START}[\\s\\S]*?${MARK_END}\\s*`).exec(html);
   if (block !== null) html = html.replace(block[0], "");
+  const meta = new RegExp(`${META_START}[\\s\\S]*?${META_END}\\s*`).exec(html);
+  if (meta !== null) html = html.replace(meta[0], "");
   return html.replace(ICON_LINK, "");
+}
+
+/** Removes bundle metadata that the generated values replace. */
+function cleanMetadata(html: string): string {
+  const block = new RegExp(`${META_START}[\\s\\S]*?${META_END}\\s*`).exec(html);
+  if (block !== null) html = html.replace(block[0], "");
+  html = html.replace(/<title\b[^>]*>[\s\S]*?<\/title\s*>/gi, "");
+  html = html.replace(/<link\b[^>]*\brel=["']?canonical["']?[^>]*>/gi, "");
+  return html.replace(/<meta\b[^>]*>/gi, (tag) =>
+    /(?:name|property)=["'](?:description|og:[^"']+|twitter:[^"']+)["']/i
+      .test(tag)
+      ? ""
+      : tag
+  );
 }
 
 /** Puts a generated block of link tags right before `</head>`. */
@@ -168,6 +193,43 @@ async function injectAppIcon(
   );
 }
 
+/** Adds search and social sharing metadata to every published app entry. */
+async function injectAppMetadata(
+  apps: Apps,
+  item: ItemInfo,
+  icon: string | undefined,
+): Promise<void> {
+  const path = fromRoot(apps.root, apps.config.deploy.folder, item.folder, item.index);
+  if (!(await isFile(path))) return;
+  let html = await readText(path);
+  if (!html.includes("</head>")) return;
+
+  html = cleanMetadata(html);
+  const website = apps.config.website;
+  const title = `${item.name} — ${item.title} online | ArtCraft`;
+  const description = `${item.description} Use this free ${item.title} alternative online in your browser with ArtCraft.`;
+  const canonical = `${website.url.replace(/\/+$/, "")}/${item.folder}/`;
+  const image = icon === undefined
+    ? item.icon
+    : `${website.url.replace(/\/+$/, "")}/${icon}`;
+  const attributes = [
+    `<title>${escapeAttribute(title)}</title>`,
+    `<meta name="description" content="${escapeAttribute(description)}">`,
+    `<link rel="canonical" href="${escapeAttribute(canonical)}">`,
+    `<meta property="og:type" content="website">`,
+    `<meta property="og:url" content="${escapeAttribute(canonical)}">`,
+    `<meta property="og:title" content="${escapeAttribute(title)}">`,
+    `<meta property="og:description" content="${escapeAttribute(description)}">`,
+    `<meta property="og:image" content="${escapeAttribute(image)}">`,
+    `<meta name="twitter:card" content="summary">`,
+    `<meta name="twitter:title" content="${escapeAttribute(title)}">`,
+    `<meta name="twitter:description" content="${escapeAttribute(description)}">`,
+    `<meta name="twitter:image" content="${escapeAttribute(image)}">`,
+  ];
+  const block = `${META_START}\n${attributes.map((value) => `  ${value}`).join("\n")}\n${META_END}\n`;
+  await writeText(path, html.replace("</head>", `${block}</head>`));
+}
+
 /**
  * Publishes every configured software icon: the cards of the entry page get
  * them through apps.json, and the page of each app gets its own favicon. The
@@ -184,6 +246,12 @@ export async function publishIcons(apps: Apps): Promise<void> {
     icons.set(item.baseurl, icon);
     // The card and the app page itself both point at the published icon.
     await injectAppIcon(apps, item, icon);
+    await injectAppMetadata(apps, item, icon);
+  }
+
+  // Metadata must still be present when an optional software icon is missing.
+  for (const item of apps.list) {
+    if (!icons.has(item.baseurl)) await injectAppMetadata(apps, item, undefined);
   }
 
   await ensureDir(fromRoot(apps.root, apps.config.deploy.folder, ICON_FOLDER));
