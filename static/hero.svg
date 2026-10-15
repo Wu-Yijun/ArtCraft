@@ -40,23 +40,23 @@
 
   <!-- apps -->
   <g font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="600" fill="#ffffff">
-    <!-- image, illustration, photo and PDF -->
-    <g transform="translate(716 64)"><rect width="60" height="60" rx="15" fill="#31a8ff" fill-opacity=".28" stroke="#31a8ff" stroke-opacity=".72"/><text x="30" y="37" text-anchor="middle">Ps</text></g>
-    <g transform="translate(794 64)"><rect width="60" height="60" rx="15" fill="#ff9a00" fill-opacity=".28" stroke="#ff9a00" stroke-opacity=".72"/><text x="30" y="37" text-anchor="middle">Ai</text></g>
-    <g transform="translate(872 64)"><rect width="60" height="60" rx="15" fill="#31a8ff" fill-opacity=".22" stroke="#31a8ff" stroke-opacity=".65"/><text x="30" y="37" text-anchor="middle">Lr</text></g>
-    <g transform="translate(950 64)"><rect width="60" height="60" rx="15" fill="#ed1c24" fill-opacity=".25" stroke="#ed1c24" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Pdf</text></g>
-    <g transform="translate(1028 64)"><rect width="60" height="60" rx="15" fill="#f24e1e" fill-opacity=".25" stroke="#f24e1e" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Fg</text></g>
+    <!-- image, photo, design and PDF -->
+    <g transform="translate(716 64)"><rect width="60" height="60" rx="15" fill="#31a8ff" fill-opacity=".22" stroke="#31a8ff" stroke-opacity=".65"/><text x="30" y="37" text-anchor="middle">Ps</text></g>
+    <g transform="translate(794 64)"><rect width="60" height="60" rx="15" fill="#31a8ff" fill-opacity=".25" stroke="#31a8ff" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Lr</text></g>
+    <g transform="translate(872 64)"><rect width="60" height="60" rx="15" fill="#ff9a00" fill-opacity=".25" stroke="#ff9a00" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Ai</text></g>
+    <g transform="translate(950 64)"><rect width="60" height="60" rx="15" fill="#f24e1e" fill-opacity=".28" stroke="#f24e1e" stroke-opacity=".72"/><text x="30" y="37" text-anchor="middle">Fg</text></g>
+    <g transform="translate(1028 64)"><rect width="60" height="60" rx="15" fill="#ed1c24" fill-opacity=".28" stroke="#ed1c24" stroke-opacity=".72"/><text x="30" y="37" text-anchor="middle">Pdf</text></g>
 
-    <!-- video, motion graphics, layout and presentations -->
-    <g transform="translate(716 138)"><rect width="60" height="60" rx="15" fill="#9999ff" fill-opacity=".28" stroke="#9999ff" stroke-opacity=".72"/><text x="30" y="37" text-anchor="middle">Pr</text></g>
+    <!-- video, audio and layout -->
+    <g transform="translate(716 138)"><rect width="60" height="60" rx="15" fill="#9999ff" fill-opacity=".28" stroke="#9999ff" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Pr</text></g>
     <g transform="translate(794 138)"><rect width="60" height="60" rx="15" fill="#cf5cff" fill-opacity=".25" stroke="#cf5cff" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Ae</text></g>
-    <g transform="translate(872 138)"><rect width="60" height="60" rx="15" fill="#ff3366" fill-opacity=".25" stroke="#ff3366" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Id</text></g>
-    <g transform="translate(950 138)"><rect width="60" height="60" rx="15" fill="#f57827" fill-opacity=".28" stroke="#f57827" stroke-opacity=".72"/><text x="30" y="37" text-anchor="middle">Pp</text></g>
-    <g transform="translate(1028 138)"><rect width="60" height="60" rx="15" fill="#22a366" fill-opacity=".25" stroke="#22a366" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Xl</text></g>
+    <g transform="translate(872 138)"><rect width="60" height="60" rx="15" fill="#00a651" fill-opacity=".25" stroke="#00a651" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Au</text></g>
+    <g transform="translate(950 138)"><rect width="60" height="60" rx="15" fill="#e83e2f" fill-opacity=".25" stroke="#e83e2f" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Cad</text></g>
+    <g transform="translate(1028 138)"><rect width="60" height="60" rx="15" fill="#ff3366" fill-opacity=".25" stroke="#ff3366" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Id</text></g>
 
-    <!-- documents, audio and CAD -->
+    <!-- office -->
     <g transform="translate(716 212)"><rect width="60" height="60" rx="15" fill="#2b579a" fill-opacity=".32" stroke="#5b9bd5" stroke-opacity=".72"/><text x="30" y="37" text-anchor="middle">Wd</text></g>
-    <g transform="translate(794 212)"><rect width="60" height="60" rx="15" fill="#00a651" fill-opacity=".25" stroke="#00a651" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Au</text></g>
-    <g transform="translate(872 212)"><rect width="60" height="60" rx="15" fill="#e83e2f" fill-opacity=".25" stroke="#e83e2f" stroke-opacity=".68"/><text x="30" y="37" text-anchor="middle">Cad</text></g>
+    <g transform="translate(794 212)"><rect width="60" height="60" rx="15" fill="#f57827" fill-opacity=".32" stroke="#f57827" stroke-opacity=".72"/><text x="30" y="37" text-anchor="middle">Pp</text></g>
+    <g transform="translate(872 212)"><rect width="60" height="60" rx="15" fill="#22a366" fill-opacity=".32" stroke="#22a366" stroke-opacity=".72"/><text x="30" y="37" text-anchor="middle">Xl</text></g>
   </g>
 </svg>
