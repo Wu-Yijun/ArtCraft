@@ -6,7 +6,7 @@ After Effects, Figma, AutoCAD, Excel, PowerPoint, Word and Acrobat**.
 
 **[Open ArtCraft online](https://Wu-Yijun.github.io/ArtCraft/)**
 
-![ArtCraft — free online alternatives to Photoshop and other creative apps](static/hero.svg)
+[![ArtCraft — free online alternatives to Photoshop and other creative apps](static/hero.svg)](https://Wu-Yijun.github.io/ArtCraft/)
 
 ## What can I use it for?
 
