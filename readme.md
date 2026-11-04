@@ -24,14 +24,14 @@ drafting, documents or presentations.
 | <img src="static/icons/aftereffects.svg" width="18" height="18" alt="After Effects"> **After Effects** | After Effects-style motion graphics and VFX | [EffectCraft](https://Wu-Yijun.github.io/ArtCraft/aftereffects/) |
 | <img src="static/icons/pdf.svg" width="18" height="18" alt="Acrobat"> **Acrobat** | Reading, organizing and editing PDFs | [PdfCraft](https://Wu-Yijun.github.io/ArtCraft/pdf/) |
 | <img src="static/icons/indesign.svg" width="18" height="18" alt="InDesign"> **InDesign** | InDesign-style page layout | [DesignCraft](https://Wu-Yijun.github.io/ArtCraft/indesign/) |
-| <img src="static/icons/figma.svg" width="12" height="18" alt="Figma"> **Figma** | Figma-style UI design and prototyping | [FigCraft](https://Wu-Yijun.github.io/ArtCraft/figma/) |
-| <img src="static/icons/excel.svg" width="18" height="18" alt="Excel"> **Excel** | Excel-style spreadsheets and data analysis | [GridCraft](https://Wu-Yijun.github.io/ArtCraft/excel/) |
 | <img src="static/icons/substancepainter.svg" width="18" height="18" alt="Substance 3D Painter"> **Substance 3D Painter** | Substance 3D Painter-style 3D texture painting | [TextureCraft](https://Wu-Yijun.github.io/ArtCraft/substancepainter/) |
 | <img src="static/icons/substancedesigner.svg" width="18" height="18" alt="Substance 3D Designer"> **Substance 3D Designer** | Substance 3D Designer-style procedural materials | [MaterialCraft](https://Wu-Yijun.github.io/ArtCraft/substancedesigner/) |
-| <img src="static/icons/autocad.svg" width="73" height="18" alt="AutoCAD"> **AutoCAD** | AutoCAD-style drafting and CAD | [CADCraft](https://Wu-Yijun.github.io/ArtCraft/autocad/) |
-| <img src="static/icons/protools.svg" width="18" height="18" alt="Pro Tools"> **Pro Tools** | Avid Pro Tools-style audio recording, editing and mixing | [SoundCraft](https://Wu-Yijun.github.io/ArtCraft/protools/) |
 | <img src="static/icons/word.svg" width="18" height="18" alt="Word"> **Word** | Word-style document editing | [WordCraft](https://Wu-Yijun.github.io/ArtCraft/word/) |
 | <img src="static/icons/powerpoint.svg" width="18" height="18" alt="PowerPoint"> **PowerPoint** | PowerPoint-style presentations | [DeckCraft](https://Wu-Yijun.github.io/ArtCraft/powerpoint/) |
+| <img src="static/icons/excel.svg" width="18" height="18" alt="Excel"> **Excel** | Excel-style spreadsheets and data analysis | [GridCraft](https://Wu-Yijun.github.io/ArtCraft/excel/) |
+| <img src="static/icons/figma.svg" width="12" height="18" alt="Figma"> **Figma** | Figma-style UI design and prototyping | [FigCraft](https://Wu-Yijun.github.io/ArtCraft/figma/) |
+| <img src="static/icons/protools.svg" width="18" height="18" alt="Pro Tools"> **Pro Tools** | Avid Pro Tools-style audio recording, editing and mixing | [SoundCraft](https://Wu-Yijun.github.io/ArtCraft/protools/) |
+| <img src="static/icons/autocad.svg" width="73" height="18" alt="AutoCAD"> **AutoCAD** | AutoCAD-style drafting and CAD | [CADCraft](https://Wu-Yijun.github.io/ArtCraft/autocad/) |
 
 ## Why ArtCraft?
 
