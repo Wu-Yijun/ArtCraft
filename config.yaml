@@ -33,8 +33,9 @@ website:
   tagline: Free Photoshop alternatives and creative apps online
   description: >-
     WordCraft, DeckCraft, GridCraft, PhotoCraft, VectorCraft, FilmCraft,
-    LightCraft, PdfCraft, EffectCraft, DesignCraft, FigCraft, CADCraft and
-    SoundCraft — open-source creative tools written from scratch in pure Rust,
+    LightCraft, PdfCraft, EffectCraft, DesignCraft, FigCraft, TextureCraft,
+    MaterialCraft, CADCraft and SoundCraft — open-source creative tools written
+    from scratch in pure Rust,
     compiled to WebAssembly and running entirely in your browser.
   url: https://Wu-Yijun.github.io/ArtCraft/
   baseurl: /ArtCraft/
@@ -346,6 +347,56 @@ apps:
     release-pattern: |
       ^figcraft-web-(\d+\.\d+\.\d+)\.zip$
       ^figcraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+
+  - name: TextureCraft
+    title: Substance 3D Painter
+    folder: substancepainter
+    software-icon: static/icons/substancepainter.svg
+    aliases:
+      - painter
+      - texture
+      - texturing
+      - substance
+      - tex
+      - spp
+    baseurl: /ArtCraft/substancepainter/
+    github-repo: https://github.com/storytold/texturecraft
+    home: https://getartcraft.com/apps/texturecraft
+    icon: https://getartcraft.com/images/apps/texturecraft/icon.webp
+    status: In development
+    description: A free Substance 3D Painter alternative online for painting PBR textures and materials on 3D models in your browser.
+    release-pattern: |
+      ^texturecraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^texturecraft-web-(.*)\.zip$
+      ^\w+-web-(.*)\.zip$
+      web\.(.*)\.zip
+      web(.*)zip
+    index: index.html
+
+  - name: MaterialCraft
+    title: Substance 3D Designer
+    folder: substancedesigner
+    software-icon: static/icons/substancedesigner.svg
+    aliases:
+      - designer
+      - material
+      - materials
+      - mat
+      - sbs
+      - procedural
+    baseurl: /ArtCraft/substancedesigner/
+    github-repo: https://github.com/storytold/materialcraft
+    home: https://getartcraft.com/apps/materialcraft
+    icon: https://getartcraft.com/images/apps/materialcraft/icon.webp
+    status: In development
+    description: A free Substance 3D Designer alternative online for building node-based procedural materials and textures in your browser.
+    release-pattern: |
+      ^materialcraft-web-(\d+\.\d+\.\d+)\.zip$
+      ^materialcraft-web-(.*)\.zip$
       ^\w+-web-(.*)\.zip$
       web\.(.*)\.zip
       web(.*)zip

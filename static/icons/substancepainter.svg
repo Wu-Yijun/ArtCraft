@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 234 234">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #99e83f;
+      }
+
+      .cls-2 {
+        fill: #1e3101;
+      }
+    </style>
+  </defs>
+  <g id="Surfaces">
+    <g id="_3D_AR" data-name="3D &amp;amp; AR">
+      <g id="Outline_no_shadow_copy_13" data-name="Outline no shadow copy 13">
+        <rect class="cls-2" width="234" height="234" rx="41.97" ry="41.97"/>
+      </g>
+    </g>
+  </g>
+  <g id="Outlined_Mnemonics_Logos" data-name="Outlined Mnemonics &amp;amp; Logos">
+    <g>
+      <path class="cls-1" d="M85.69,62.11c30.59,0,47.82,14.33,47.82,38.32,0,28.01-23.34,39.28-45.24,39.28h-14.81v30.27h-29.94V62.11h42.18ZM73.46,87.71v26.4h13.2c9.18,0,15.62-3.7,15.62-13.04,0-8.53-5.47-13.36-14.97-13.36h-13.85Z"/>
+      <path class="cls-1" d="M177.93,86.75h15.46v22.38h-15.46v28.66c0,7.73,3.22,10.63,8.69,10.63,1.77,0,4.35-.32,6.76-1.13l.16,22.22c-3.54,1.29-7.41,2.09-14.65,2.09-18.35,0-29.14-8.69-29.14-29.3v-33.17h-12.07v-22.38h12.07v-21.09h28.17v21.09Z"/>
+    </g>
+  </g>
+</svg>
