@@ -2,7 +2,8 @@
 
 ArtCraft is a collection of open-source creative tools that run directly in your browser. It is a
 simple place to find free online alternatives to **Photoshop, Illustrator, Lightroom, Premiere,
-After Effects, Figma, AutoCAD, Excel, PowerPoint, Word and Acrobat**.
+After Effects, Figma, Substance 3D Painter, Substance 3D Designer, AutoCAD, Excel, PowerPoint,
+Word and Acrobat**.
 
 **[Open ArtCraft online](https://Wu-Yijun.github.io/ArtCraft/)**
 
@@ -10,24 +11,27 @@ After Effects, Figma, AutoCAD, Excel, PowerPoint, Word and Acrobat**.
 
 ## What can I use it for?
 
-Choose an app for image editing, vector illustration, video editing, motion graphics, audio work,
-PDFs, page layout, UI prototyping, spreadsheets, CAD drafting, documents or presentations.
+Choose an app for image editing, vector illustration, video editing, motion graphics, 3D texture
+painting, procedural materials, audio work, PDFs, page layout, UI prototyping, spreadsheets, CAD
+drafting, documents or presentations.
 
-| App | Best for | Open online |
+| Software | Best for | Open online |
 | --- | --- | --- |
-| **PhotoCraft** | Photoshop-style image editing | [PhotoCraft](https://Wu-Yijun.github.io/ArtCraft/photoshop/) |
-| **VectorCraft** | Illustrator-style vector drawing | [VectorCraft](https://Wu-Yijun.github.io/ArtCraft/illustrator/) |
-| **LightCraft** | Lightroom-style photo library and RAW development | [LightCraft](https://Wu-Yijun.github.io/ArtCraft/lightroom/) |
-| **FilmCraft** | Premiere-style video editing | [FilmCraft](https://Wu-Yijun.github.io/ArtCraft/premiere/) |
-| **EffectCraft** | After Effects-style motion graphics and VFX | [EffectCraft](https://Wu-Yijun.github.io/ArtCraft/aftereffects/) |
-| **PdfCraft** | Reading, organizing and editing PDFs | [PdfCraft](https://Wu-Yijun.github.io/ArtCraft/pdf/) |
-| **DesignCraft** | InDesign-style page layout | [DesignCraft](https://Wu-Yijun.github.io/ArtCraft/indesign/) |
-| **FigCraft** | Figma-style UI design and prototyping | [FigCraft](https://Wu-Yijun.github.io/ArtCraft/figma/) |
-| **GridCraft** | Excel-style spreadsheets and data analysis | [GridCraft](https://Wu-Yijun.github.io/ArtCraft/excel/) |
-| **CADCraft** | AutoCAD-style drafting and CAD | [CADCraft](https://Wu-Yijun.github.io/ArtCraft/autocad/) |
-| **SoundCraft** | Avid Pro Tools-style audio recording, editing and mixing | [SoundCraft](https://Wu-Yijun.github.io/ArtCraft/protools/) |
-| **WordCraft** | Word-style document editing | [WordCraft](https://Wu-Yijun.github.io/ArtCraft/word/) |
-| **DeckCraft** | PowerPoint-style presentations | [DeckCraft](https://Wu-Yijun.github.io/ArtCraft/powerpoint/) |
+| <img src="static/icons/photoshop.svg" width="18" height="18" alt="Photoshop"> **Photoshop** | Photoshop-style image editing | [PhotoCraft](https://Wu-Yijun.github.io/ArtCraft/photoshop/) |
+| <img src="static/icons/illustrator.svg" width="18" height="18" alt="Illustrator"> **Illustrator** | Illustrator-style vector drawing | [VectorCraft](https://Wu-Yijun.github.io/ArtCraft/illustrator/) |
+| <img src="static/icons/lightroom.svg" width="18" height="18" alt="Lightroom"> **Lightroom** | Lightroom-style photo library and RAW development | [LightCraft](https://Wu-Yijun.github.io/ArtCraft/lightroom/) |
+| <img src="static/icons/premiere.svg" width="18" height="18" alt="Premiere Pro"> **Premiere Pro** | Premiere-style video editing | [FilmCraft](https://Wu-Yijun.github.io/ArtCraft/premiere/) |
+| <img src="static/icons/aftereffects.svg" width="18" height="18" alt="After Effects"> **After Effects** | After Effects-style motion graphics and VFX | [EffectCraft](https://Wu-Yijun.github.io/ArtCraft/aftereffects/) |
+| <img src="static/icons/pdf.svg" width="18" height="18" alt="Acrobat"> **Acrobat** | Reading, organizing and editing PDFs | [PdfCraft](https://Wu-Yijun.github.io/ArtCraft/pdf/) |
+| <img src="static/icons/indesign.svg" width="18" height="18" alt="InDesign"> **InDesign** | InDesign-style page layout | [DesignCraft](https://Wu-Yijun.github.io/ArtCraft/indesign/) |
+| <img src="static/icons/substancepainter.svg" width="18" height="18" alt="Substance 3D Painter"> **Substance 3D Painter** | Substance 3D Painter-style 3D texture painting | [TextureCraft](https://Wu-Yijun.github.io/ArtCraft/substancepainter/) |
+| <img src="static/icons/substancedesigner.svg" width="18" height="18" alt="Substance 3D Designer"> **Substance 3D Designer** | Substance 3D Designer-style procedural materials | [MaterialCraft](https://Wu-Yijun.github.io/ArtCraft/substancedesigner/) |
+| <img src="static/icons/word.svg" width="18" height="18" alt="Word"> **Word** | Word-style document editing | [WordCraft](https://Wu-Yijun.github.io/ArtCraft/word/) |
+| <img src="static/icons/powerpoint.svg" width="18" height="18" alt="PowerPoint"> **PowerPoint** | PowerPoint-style presentations | [DeckCraft](https://Wu-Yijun.github.io/ArtCraft/powerpoint/) |
+| <img src="static/icons/excel.svg" width="18" height="18" alt="Excel"> **Excel** | Excel-style spreadsheets and data analysis | [GridCraft](https://Wu-Yijun.github.io/ArtCraft/excel/) |
+| <img src="static/icons/figma.svg" width="12" height="18" alt="Figma"> **Figma** | Figma-style UI design and prototyping | [FigCraft](https://Wu-Yijun.github.io/ArtCraft/figma/) |
+| <img src="static/icons/protools.svg" width="18" height="18" alt="Pro Tools"> **Pro Tools** | Avid Pro Tools-style audio recording, editing and mixing | [SoundCraft](https://Wu-Yijun.github.io/ArtCraft/protools/) |
+| <img src="static/icons/autocad.svg" width="73" height="18" alt="AutoCAD"> **AutoCAD** | AutoCAD-style drafting and CAD | [CADCraft](https://Wu-Yijun.github.io/ArtCraft/autocad/) |
 
 ## Why ArtCraft?
 
@@ -94,8 +98,9 @@ app favicon, canonical URL, Open Graph card and Twitter card into every configur
 
 ## Trademarks and license
 
-Photoshop, Illustrator, Lightroom, Premiere, After Effects, Figma, AutoCAD, Excel, PowerPoint,
-Word, Acrobat and other product names are trademarks of their respective owners. ArtCraft is an
+Photoshop, Illustrator, Lightroom, Premiere, After Effects, Figma, Substance 3D Painter,
+Substance 3D Designer, AutoCAD, Excel, PowerPoint, Word, Acrobat and other product names are
+trademarks of their respective owners. ArtCraft is an
 independent clean-room project and is not affiliated with or endorsed by those companies.
 
 The deployment code in this repository is released under the [MIT License](LICENSE). Each app keeps

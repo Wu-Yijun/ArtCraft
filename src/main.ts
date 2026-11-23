@@ -168,7 +168,9 @@ async function main(): Promise<void> {
   }
 
   const cacheUpdated = updated.length > 0;
-  const deployUpdated = apps.deployRebuild || cacheUpdated;
+  // A forced run also republishes the deploy folder: the copy step repairs
+  // bundle layouts, so it has to reach GitHub Pages even without a new release.
+  const deployUpdated = apps.deployRebuild || cacheUpdated || forceDeploy;
 
   if (!cacheUpdated && !deployUpdated) {
     log("");
