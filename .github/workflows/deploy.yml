@@ -90,7 +90,7 @@ jobs:
         uses: Wu-Yijun/actions/.github/actions/deploy@main
         with:
           path: deploy/
-          expire: 30      # 30 seconds for max waiting before delete
+          expire: 60      # 60 seconds for max waiting before delete
       
       - name: Update Deploy Hash
         if: steps.updates.outputs.deployUpdated == 'true'
