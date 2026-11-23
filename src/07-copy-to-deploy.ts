@@ -1,6 +1,7 @@
 import { readdir } from "node:fs/promises";
 
 import type { Apps } from "./type.ts";
+import { repairBundleImports } from "./utils/bundle.ts";
 import {
   copyDir,
   fromRoot,
@@ -15,6 +16,7 @@ import {
   green,
   log,
   progress,
+  red,
   step,
   yellow,
 } from "./utils/log.ts";
@@ -53,6 +55,30 @@ export async function copyToDeploy(apps: Apps): Promise<void> {
     const target = `${deployFolder}/${item.folder}`;
     await recreateDir(target);
     await copyDir(source, target);
+
+    // A bundle may import an asset from a sibling folder while shipping it at
+    // the site root (PhotoCraft 0.17+ and its wasm-bindgen snippets). Restore
+    // the copy the browser asks for, and say so when something is still gone.
+    const report = await repairBundleImports(target);
+    if (report.repaired.length > 0) {
+      log(
+        `          ${yellow("patched")} ${
+          dim(
+            report.repaired
+              .map((issue) => `${issue.target} (for ${issue.module})`)
+              .join(", "),
+          )
+        }`,
+      );
+    }
+    for (const issue of report.missing) {
+      log(
+        `          ${red("missing")} ${
+          dim(`${issue.module} imports ${issue.specifier}`)
+        }`,
+      );
+    }
+
     item.deployed = true;
     log(`          ${green("deployed")} ${dim(item.baseurl)}`);
   }
